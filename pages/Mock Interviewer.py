@@ -1,19 +1,11 @@
 import streamlit as st
 import numpy as np
-from streamlit_audio_recorder import st_audio_recorder
-st.selectbox('Select a mock interview', ['Mock Interviewer', 'Mock Interviewee'])
+from audio_recorder_streamlit import audio_recorder
 
-audio_file = st_audio_recorder(start_recording=False, 
-                               stop_recording=False, 
-                               recording_time=5, 
-                               sample_rate=44100, 
-                               audio_type='wav')
+audio_bytes = audio_recorder()
 
-
-if audio_file:
-    st.audio(audio_file)
-
-audio_bytes = audio_file.read()
+if audio_bytes:
+    st.audio(audio_bytes, format="audio/wav")
 
 st.audio(audio_bytes, format='audio/ogg')
 
