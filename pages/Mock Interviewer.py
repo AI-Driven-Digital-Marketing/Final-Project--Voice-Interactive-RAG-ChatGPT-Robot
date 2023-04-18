@@ -9,7 +9,7 @@ audio_file = st_audio_recorder(start_recording=False,
                                sample_rate=44100, 
                                audio_type='wav')
 
-# 将录音文件传递给 `st.audio` 函数以在页面上呈现录音内容
+
 if audio_file:
     st.audio(audio_file)
 
