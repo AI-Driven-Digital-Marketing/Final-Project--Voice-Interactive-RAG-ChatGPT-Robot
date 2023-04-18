@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-from audio_recorder_streamlit import st_audio_recorder
+from streamlit_audio_recorder import st_audio_recorder
 st.selectbox('Select a mock interview', ['Mock Interviewer', 'Mock Interviewee'])
 
 audio_file = st_audio_recorder(start_recording=False, 
