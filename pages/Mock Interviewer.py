@@ -2,21 +2,9 @@ import streamlit as st
 import numpy as np
 from audiorecorder import audiorecorder
 
-# audio_bytes = audio_recorder(
-#     text="Record your Questions",
-#     recording_color="#e8b62c",
-#     neutral_color="#6aa36f",
-#     icon_name="user",
-#     icon_size="6x",
-# )
-
-# if audio_bytes:
-#     st.audio(audio_bytes, format="audio/wav",sample_rate=44100)
-
-
 
 st.title("Audio Recorder")
-audio = audiorecorder("Click to record", "Recording...")
+audio = audiorecorder("Click to record", "Stop Recording...")
 
 if len(audio) > 0:
     # To play audio in frontend:
