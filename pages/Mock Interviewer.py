@@ -30,8 +30,9 @@ with col1:
         # INFO: once a recording is completed, audio data will be saved to wav_audio_data
 with col2:
 # wav_audio_data
-    model = whisper.load_model("base")
+    
     def transcribe(audio):
+        model = whisper.load_model("base")
         # load audio and pad/trim it to fit 30 seconds
         audio = whisper.load_audio(audio)
         audio = whisper.pad_or_trim(audio)
