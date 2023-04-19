@@ -8,4 +8,4 @@ dependencies:
     - pinecone-client
     - openai
     - streamlit-audiorecorder
-    - openai-whisper
+    - whisper
