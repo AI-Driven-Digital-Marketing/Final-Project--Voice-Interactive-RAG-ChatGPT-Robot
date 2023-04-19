@@ -3,7 +3,6 @@ import numpy as np
 from st_custom_components import st_audiorec
 import whisper
 
-
 # from audiorecorder import audiorecorder
 # audio = audiorecorder("Click to record", "Stop Recording...")
 
@@ -32,24 +31,24 @@ with col1:
 with col2:
 # wav_audio_data
     model = whisper.load_model("base")
-    def transcribe(audio):
-        # load audio and pad/trim it to fit 30 seconds
-        audio = whisper.load_audio(audio)
-        audio = whisper.pad_or_trim(audio)
+    # def transcribe(audio):
+    #     # load audio and pad/trim it to fit 30 seconds
+    #     audio = whisper.load_audio(audio)
+    #     audio = whisper.pad_or_trim(audio)
 
-        # make log-Mel spectrogram and move to the same device as the model
-        mel = whisper.log_mel_spectrogram(audio_data).to(model.device)
+    #     # make log-Mel spectrogram and move to the same device as the model
+    #     mel = whisper.log_mel_spectrogram(audio_data).to(model.device)
 
-        # detect the spoken language
-        _, probs = model.detect_language(mel)
-        print(f"Detected language: {max(probs, key=probs.get)}")
+    #     # detect the spoken language
+    #     _, probs = model.detect_language(mel)
+    #     print(f"Detected language: {max(probs, key=probs.get)}")
 
-        # decode the audio
-        options = whisper.DecodingOptions()
-        result = whisper.decode(model, mel, options)
-        return result.text
-    st.title("Transcript")
-    st.write("Click the button below to get the transcript")
-    st.button("Transcript")
-    st.text_input(transcribe(audio_data))
+    #     # decode the audio
+    #     options = whisper.DecodingOptions()
+    #     result = whisper.decode(model, mel, options)
+    #     return result.text
+    # st.title("Transcript")
+    # st.write("Click the button below to get the transcript")
+    # st.button("Transcript")
+    # st.text_input(transcribe(audio_data))
     
