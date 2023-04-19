@@ -14,8 +14,6 @@ import whisper
 #     wav_file = open("audio.mp3", "wb")
 #     wav_file.write(audio.tobytes())
 # input GUI for user
-_,col1,_ = st.columns([1,6,1])
-_,col2,_ = st.columns([1,6,1])
 col1, col2 = st.columns(2,gap = "medium")
 
 with col1:
@@ -40,15 +38,15 @@ with col2:
         mel = whisper.log_mel_spectrogram(audio).to(model.device)
 
         # detect the spoken language
-        _, probs = model.detect_language(mel)
-        print(f"Detected language: {max(probs, key=probs.get)}")
+        # _, probs = model.detect_language(mel)
+        # print(f"Detected language: {max(probs, key=probs.get)}")
 
         # decode the audio
-        options = whisper.DecodingOptions()
+        options = whisper.DecodingOptions(language= 'en', fp16=False)
         result = whisper.decode(model, mel, options)
         return result.text
     st.title("Transcript")
     st.write("Click the button below to get the transcript")
     if st.button("Transcript"):
-       st.text_input("Transcript",transcribe(audio_data))
+       st.write(transcribe(audio_data))
     
