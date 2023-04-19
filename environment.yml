@@ -3,7 +3,6 @@ dependencies:
   - numpy
   - pandas
   - pip
-  - openai-whisper=0.0.3
   - pip:
     - matplotlib
     - pinecone-client
