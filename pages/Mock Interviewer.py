@@ -49,6 +49,6 @@ with col2:
         return result.text
     st.title("Transcript")
     st.write("Click the button below to get the transcript")
-    st.button("Transcript")
-    st.text_input(transcribe(audio_data))
+    if st.button("Transcript"):
+       st.text_input("Transcript",transcribe(audio_data))
     
