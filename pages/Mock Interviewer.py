@@ -1,19 +1,9 @@
 import streamlit as st
 import numpy as np
 from st_custom_components import st_audiorec
-#import whisper
 import wave
 import openai
-# from audiorecorder import audiorecorder
-# audio = audiorecorder("Click to record", "Stop Recording...")
 
-# if len(audio) > 0:
-#     # To play audio in frontend:
-#     st.audio(audio.tobytes())
-    
-#     # To save audio to a file:
-#     wav_file = open("audio.mp3", "wb")
-#     wav_file.write(audio.tobytes())
 # input GUI for user
 col1, col2 = st.columns(2,gap = "medium")
 
@@ -30,6 +20,12 @@ def save_wav(audio_data):
         audio_file.setparams((nchannels, sampwidth, framerate, nframes, comptype, compname))
         audio_file.writeframes(audio_data)
 
+def transcribe(audio):
+    # model = initialize()
+    openai.api_key = st.secrets['openai_key']
+    audio_file= open("audio_file.wav", "rb")
+    transcript = openai.Audio.transcribe("whisper-1", audio_file)
+    return transcript
 
 
 with col1:
@@ -42,22 +38,12 @@ with col1:
         save_wav(audio_data)
         st.audio(audio_data, format='audio/wav')
         
-# @st.cache_resource
-# def initialize():
-#     model = whisper.load_model("base")
-#     return model
-# wav_audio_data
-def transcribe(audio):
-    # model = initialize()
-    openai.api_key = st.secrets['openai_key']
-    audio_file= open("audio_file.wav", "rb")
-    transcript = openai.Audio.transcribe("whisper-1", audio_file)
-    return transcript
+
 
 with col2:
 
     st.title("Transcript")
     st.write("Click the button below to get the transcript")
     if st.button("Transcript"):
-       st.write(transcribe(audio_data))
+       st.write(transcribe(audio_data)['text'])
     
