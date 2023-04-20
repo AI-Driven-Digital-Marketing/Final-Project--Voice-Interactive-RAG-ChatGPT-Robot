@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 from st_custom_components import st_audiorec
-import whisper
+#import whisper
 import wave
 import openai
 # from audiorecorder import audiorecorder
