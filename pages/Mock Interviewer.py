@@ -5,7 +5,7 @@ import wave
 import openai
 
 # input GUI for user
-col1, col2 = st.columns(2,gap = "medium")
+col1, col2 = st.columns(2)
 
 def save_wav(audio_data):
     nchannels = 1
@@ -36,7 +36,7 @@ with col1:
     if audio_data is not None:
         # display audio data as received on the backend
         save_wav(audio_data)
-        st.audio(audio_data, format='audio/wav')
+        #st.audio(audio_data, format='audio/wav')
         
 
 
