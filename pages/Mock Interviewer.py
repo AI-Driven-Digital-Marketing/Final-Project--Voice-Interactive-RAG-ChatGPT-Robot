@@ -45,5 +45,5 @@ with col2:
     st.title("Transcript")
     st.write("Click the button below to get the transcript")
     if st.button("Transcript"):
-       st.write(transcribe(audio_data)['text'])
+       st.text_input(transcribe(audio_data)['text'])
     
