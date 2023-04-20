@@ -3,10 +3,12 @@ import numpy as np
 from st_custom_components import st_audiorec
 import wave
 import openai
+import boto3
 
 # input GUI for user
 col1, col2 = st.columns(2)
 
+# save user input audio as .wav file
 def save_wav(audio_data):
     nchannels = 1
     sampwidth = 2
@@ -20,6 +22,7 @@ def save_wav(audio_data):
         audio_file.setparams((nchannels, sampwidth, framerate, nframes, comptype, compname))
         audio_file.writeframes(audio_data)
 
+# transcribe audio to text using openai Whisper
 def transcribe(audio):
     # model = initialize()
     openai.api_key = st.secrets['openai_key']
@@ -27,6 +30,22 @@ def transcribe(audio):
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
     return transcript
 
+# convert text to audio using aws Polly API
+def TTS():
+    polly_client = boto3.Session(
+            aws_access_key_id=st.secrets['aws_access_key_id'],                     
+            aws_secret_access_key=st.secrets['aws_secret_access_key'],
+            region_name='us-east-1').client('polly')
+
+    response = polly_client.synthesize_speech(VoiceId='Ruth',
+                    OutputFormat='mp3', 
+                    Text = 'This is a sample text to be synthesized.',
+                    Engine = 'neural')
+    speech = response['AudioStream'].read()
+    file = open('speech.mp3', 'wb')
+    file.write(speech)
+    file.close()
+    return speech
 
 with col1:
     st.title("Audio Recorder")
