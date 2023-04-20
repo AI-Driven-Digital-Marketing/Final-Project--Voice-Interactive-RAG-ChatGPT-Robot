@@ -46,10 +46,11 @@ with col2:
     st.write("Click the button below to get the transcript")
     if st.button("Transcript"):
     #    st.text_input(transcribe(audio_data)['text'])
-       default_text = transcribe(audio_data)['text']
+       audio_text = transcribe(audio_data)
+       default_text = audio_text['text']
        text_size = len(default_text)
        transcript_input = st.text_input("Adjust transcript",
-                                         value=transcribe(audio_data)['text'],
+                                         value=default_text,
                                          max_chars=200, key="my_text_input", 
                                          size=text_size)
        st.write("Prompt:", transcript_input)
