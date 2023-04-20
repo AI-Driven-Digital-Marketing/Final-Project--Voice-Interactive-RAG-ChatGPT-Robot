@@ -2,7 +2,8 @@ import streamlit as st
 import numpy as np
 from st_custom_components import st_audiorec
 import whisper
-
+import wave
+import openai
 # from audiorecorder import audiorecorder
 # audio = audiorecorder("Click to record", "Stop Recording...")
 
@@ -16,6 +17,21 @@ import whisper
 # input GUI for user
 col1, col2 = st.columns(2,gap = "medium")
 
+def save_wav(audio_data):
+    nchannels = 1
+    sampwidth = 2
+    framerate = 48000*2
+    nframes = len(audio_data) // sampwidth
+    comptype = "NONE"
+    compname = "not compressed"
+
+    # Create a new .wav file and write the audio data to it
+    with wave.open("audio_file.wav", "wb") as audio_file:
+        audio_file.setparams((nchannels, sampwidth, framerate, nframes, comptype, compname))
+        audio_file.writeframes(audio_data)
+
+
+
 with col1:
     st.title("Audio Recorder")
     st.write("Click the button below to record your voice")
@@ -23,28 +39,23 @@ with col1:
 
     if audio_data is not None:
         # display audio data as received on the backend
+        save_wav(audio_data)
         st.audio(audio_data, format='audio/wav')
-        # INFO: by calling the function an instance of the audio recorder is created
-        # INFO: once a recording is completed, audio data will be saved to wav_audio_data
-with col2:
+        
+# @st.cache_resource
+# def initialize():
+#     model = whisper.load_model("base")
+#     return model
 # wav_audio_data
-    def transcribe(audio):
-        model = whisper.load_model("base")
-        # load audio and pad/trim it to fit 30 seconds
-        audio = model.load_audio(audio)
-        audio = model.pad_or_trim(audio)
+def transcribe(audio):
+    # model = initialize()
+    openai.api_key = st.secrets['openai_key']
+    audio_file= open("audio_file.wav", "rb")
+    transcript = openai.Audio.transcribe("whisper-1", audio_file)
+    return transcript
 
-        # make log-Mel spectrogram and move to the same device as the model
-        mel = whisper.log_mel_spectrogram(audio).to(model.device)
+with col2:
 
-        # detect the spoken language
-        # _, probs = model.detect_language(mel)
-        # print(f"Detected language: {max(probs, key=probs.get)}")
-
-        # decode the audio
-        options = whisper.DecodingOptions(language= 'en', fp16=False)
-        result = whisper.decode(model, mel, options)
-        return result.text
     st.title("Transcript")
     st.write("Click the button below to get the transcript")
     if st.button("Transcript"):
