@@ -48,9 +48,6 @@ with col2:
     #    st.text_input(transcribe(audio_data)['text'])     
        default_text = transcribe(audio_data)
        text_size = len(default_text)
-       transcript_input = st.text_input("Adjust transcript",
-                                         value=default_text,
-                                         max_chars=200, key="my_text_input", 
-                                         size=text_size)
+       transcript_input = st.text_input("Adjust transcript", value=default_text,max_chars=200, key="my_text_input",size=text_size)
        st.write("Prompt:", transcript_input)
     
