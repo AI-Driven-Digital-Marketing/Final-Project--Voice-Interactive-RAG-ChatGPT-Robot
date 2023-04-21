@@ -5,12 +5,18 @@
 [![author](https://img.shields.io/badge/Author-Ziwei_Duan-blue.svg)](https://www.linkedin.com/in/ziwei-duan-create/) 
 
  Voice-Interactive-RAG-ChatGPT-Robot with domain knowledge
-## Quick Portral
+### 1.Quick Portral
 ### 
 | **--->** [1. Streamlit](https://ai-driven-digital-marketing-final-project--voice-welcome-rft6s1.streamlit.app/) |
 
-| **--->** 2. Codelab|
-### Tech Stacks
+| **--->** [2. Project Proposal](https://docs.google.com/document/d/1JxmkjvF0FirF_-8B6mbn_vKlumKrOJr3HAZmBniSMq4/edit#heading=h.7sa4zxkhmsum) |
+### 2.Architecture
+
+<div align=center>
+<img src="src/Final Project (1).jpg" width="750px">
+</div>
+
+### 3.Tech Stacks
 - Python
 - Streamlit
 - Pinecone
