@@ -31,7 +31,7 @@ def transcribe(audio):
     return transcript
 
 # convert text to audio using aws Polly API
-def TTS():
+def TTS(text):
     polly_client = boto3.Session(
             aws_access_key_id=st.secrets['aws_access_key_id'],                     
             aws_secret_access_key=st.secrets['aws_secret_access_key'],
@@ -39,7 +39,7 @@ def TTS():
 
     response = polly_client.synthesize_speech(VoiceId='Ruth',
                     OutputFormat='mp3', 
-                    Text = 'This is a sample text to be synthesized.',
+                    Text = text,
                     Engine = 'neural')
     speech = response['AudioStream'].read()
     file = open('speech.mp3', 'wb')
