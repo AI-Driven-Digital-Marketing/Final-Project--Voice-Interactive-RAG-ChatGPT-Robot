@@ -9,7 +9,13 @@
 ### 
 | **--->** [1. Streamlit](https://ai-driven-digital-marketing-final-project--voice-welcome-rft6s1.streamlit.app/) |
 
-| **--->** 2. Codelab|
+| **--->** [2. Project Proposal](https://docs.google.com/document/d/1JxmkjvF0FirF_-8B6mbn_vKlumKrOJr3HAZmBniSMq4/edit#heading=h.7sa4zxkhmsum) |
+### Architecture
+
+<div align=center>
+<img src="src/Final Project (1).jpg" width="800px">
+</div>
+
 ### Tech Stacks
 - Python
 - Streamlit
