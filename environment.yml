@@ -11,9 +11,5 @@ dependencies:
     - ffmpeg-python
     - openai-whisper
     - librosa
-<<<<<<< HEAD
     - streamlit-chat
-=======
-    - streamlit-chat 
->>>>>>> ddc3fbad6268309ada8f4fb43aab1621a7be681c
 
