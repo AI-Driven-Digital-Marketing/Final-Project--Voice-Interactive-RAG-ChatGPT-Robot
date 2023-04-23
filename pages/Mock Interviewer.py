@@ -4,10 +4,34 @@ from st_custom_components import st_audiorec
 import wave
 import openai
 import boto3
+from streamlit_chat import message
+
+if 'conversation_history' not in st.session_state:
+    st.session_state['conversation_history'] = [
+        {"role": "system", "content": "You are a friendly interviewer."},
+        {"role": "user", "content": """Let's do mock interview! You ask me a question, then I answer your question, 
+                                        you ask more follow up question or start a new question.
+                                        I will send you a job description and everything should be around that,
+                                        excepts behavior question."""},
+        {"role": "assistant", "content": "Got you! Please send me your Job Description."},
+    ]
+if 'chat_history' not in st.session_state:
+    st.session_state['chat_history'] = ["Hey!"]
+
+# Continue the conversation
+def continue_conversation(conversation_history, user_message):
+    conversation_history.append({"role": "user", "content": user_message})
 
 
-# input GUI for user
-col1, col2 = st.columns(2)
+    response = openai.ChatCompletion.create(
+      model="gpt-3.5-turbo",
+      messages=conversation_history
+    )
+
+    assistant_message = response.choices[0].message.content
+    conversation_history.append({"role": "assistant", "content": assistant_message})
+    
+    return assistant_message
 
 # save user input audio as .wav file
 def save_wav(audio_data):
@@ -43,33 +67,33 @@ def TTS(text):
                     Text = text,
                     Engine = 'neural')
     speech = response['AudioStream'].read()
-    file = open('speech.mp3', 'wb')
-    file.write(speech)
-    file.close()
+    # file = open('speech.mp3', 'wb')
+    # file.write(speech)
+    # file.close()
     return speech
 
-def initialize():
-    st.session_state['key'] = 'value'
-    
-
-with col1:
-    st.title("Audio Recorder")
-    st.write("Click the button below to record your voice")
-    audio_data = st_audiorec()
-
-    if audio_data is not None:
-        # display audio data as received on the backend
-        save_wav(audio_data)
-        #st.audio(audio_data, format='audio/wav')
-        
 
 
-with col2:
 
-    st.title("Transcript")
-    st.write("Click the button below to get the transcript")
-    if st.button("Transcript"):
-    #    st.text_input(transcribe(audio_data)['text'])     
-       transcript_input = st.text_input("Adjust transcript", transcribe(audio_data)['text'])
-       st.write("Prompt:", transcript_input)
-    
+st.title("Audio Recorder")
+audio_data = st_audiorec()
+if audio_data is not None:
+    # display audio data as received on the backend
+    save_wav(audio_data)
+    #st.audio(audio_data, format='audio/wav')
+if st.button('Chat'):
+    transcript = transcribe(audio_data)['text']
+    st.session_state['chat_history'].append(transcript)
+    answer = continue_conversation( st.session_state['conversation_history'], transcript)
+    st.session_state['chat_history'].append(answer)
+    out_audio = TTS(answer)
+    st.audio(out_audio)
+
+
+for i,v in enumerate(st.session_state['chat_history']):
+    if i%2 == 1:
+        message(v, is_user=True)
+    else:
+        message(v)
+
+

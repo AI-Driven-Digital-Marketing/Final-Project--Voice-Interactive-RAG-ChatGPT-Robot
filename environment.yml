@@ -10,5 +10,6 @@ dependencies:
     - streamlit-audiorecorder
     - ffmpeg-python
     - openai-whisper
-    - boto3
+    - librosa
+    - streamlit_chat
 
