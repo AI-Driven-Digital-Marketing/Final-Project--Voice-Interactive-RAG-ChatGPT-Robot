@@ -83,7 +83,7 @@ if audio_data is not None:
     #st.audio(audio_data, format='audio/wav')
 if st.button('Chat'):
     transcript = transcribe(audio_data)['text']
-    st.session_state['chat_history'].append(transcript)
+    st.session_state['chat_history'].append(str(transcript))
     answer = continue_conversation( st.session_state['conversation_history'], transcript)
     st.session_state['chat_history'].append(answer)
     out_audio = TTS(answer)
