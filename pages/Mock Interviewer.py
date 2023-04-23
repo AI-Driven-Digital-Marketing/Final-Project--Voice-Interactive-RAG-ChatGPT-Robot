@@ -5,6 +5,7 @@ import wave
 import openai
 import boto3
 
+
 # input GUI for user
 col1, col2 = st.columns(2)
 
@@ -46,6 +47,10 @@ def TTS(text):
     file.write(speech)
     file.close()
     return speech
+
+def initialize():
+    st.session_state['key'] = 'value'
+    
 
 with col1:
     st.title("Audio Recorder")
