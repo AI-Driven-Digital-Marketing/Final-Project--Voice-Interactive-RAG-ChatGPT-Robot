@@ -5,8 +5,8 @@ import boto3
 
 def TTS(text):
     polly_client = boto3.Session(
-            aws_access_key_id='AKIAWF3N7LA6NVW422NZ',                     
-            aws_secret_access_key='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',
+            aws_access_key_id=st.secrets['aws_access_key_id'],                     
+            aws_secret_access_key=st.secrets['aws_secret_access_key'],
             region_name='us-east-1').client('polly')
 
     response = polly_client.synthesize_speech(VoiceId='Ruth',
@@ -14,9 +14,9 @@ def TTS(text):
                     Text = text,
                     Engine = 'neural')
     speech = response['AudioStream'].read()
-    file = open('speech.mp3', 'wb')
-    file.write(speech)
-    file.close()
+    # file = open('speech.mp3', 'wb')
+    # file.write(speech)
+    # file.close()
     return speech
 
 
