@@ -4,6 +4,8 @@ import pinecone
 import streamlit as st
 import json
 from random import random
+from time import sleep
+
 #defining DAG arguments
 @st.cache_resource 
 def initial_pinecone():
@@ -11,8 +13,8 @@ def initial_pinecone():
 
     # initialize connection to pinecone (get API key at app.pinecone.io)
     pinecone.init(
-        api_key=st.secrets('pinecone_key'),
-        environment=st.secrets('pinecone_region')  # may be different, check at app.pinecone.io
+        api_key=st.secrets['pinecone_key'],
+        environment=st.secrets['pinecone_region']  # may be different, check at app.pinecone.io
     )
     # check if index already exists (it shouldn't if this is first time)
     if index_name not in pinecone.list_indexes():
