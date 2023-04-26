@@ -81,7 +81,7 @@ def retrieve(query):
     xq = res['data'][0]['embedding']
 
     # get relevant contexts
-    res = index.query(xq, top_k=1, include_metadata=True)
+    res = index.query(xq, top_k=3, include_metadata=True)
     contexts = [
         x['metadata']['text'] for x in res['matches']
     ]
