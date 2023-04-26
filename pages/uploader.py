@@ -97,3 +97,4 @@ upload_text = st.text_area(label='Paste your text here:', placeholder = 'accept 
 if st.button('Upload'):
     processed_text = processing_article(upload_text)
     load2pinecone(processed_text)
+    st.write('Success!')
