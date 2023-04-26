@@ -50,7 +50,7 @@ def processing_article(arti):
         sentence += t+'\n'
         if len(sentence)>1000:
             result.append({
-                'id': int(random()*6),
+                'id': 'CRM_'+str(int(random()*6)),
                 'text':sentence
                 })
             sentence = ''
