@@ -1,15 +1,15 @@
 import streamlit as st
 import numpy as np
-import pandas as pd
+# import pandas as pd
 from st_custom_components import st_audiorec
 import wave
 import openai
 import pinecone
-import os 
-import pymysql
-from langchain.llms import OpenAI
-from langchain.chains.question_answering import load_qa_chain
-from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
+# import os 
+# import pymysql
+# from langchain.llms import OpenAI
+# from langchain.chains.question_answering import load_qa_chain
+# from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
 
 
 # input GUI for user
