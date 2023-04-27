@@ -13,4 +13,9 @@ dependencies:
     - librosa
     - streamlit-chat
     - boto3
+    - langchain 
+    - pymysql
+    - chromadb
+    
 
+ 
