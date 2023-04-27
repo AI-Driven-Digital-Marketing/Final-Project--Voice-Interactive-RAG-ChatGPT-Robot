@@ -10,7 +10,7 @@ import pymysql
 # import langchain
 # from langchain.llms import OpenAI
 # from langchain.chains.question_answering import load_qa_chain
-# from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
+# from langchain import SQLDatabase, SQLDatabaseChain
 
 
 # input GUI for user
