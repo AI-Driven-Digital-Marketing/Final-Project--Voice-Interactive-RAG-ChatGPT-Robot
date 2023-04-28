@@ -6,6 +6,7 @@ import openai
 import boto3
 from streamlit_chat import message
 
+
 if 'conversation_history' not in st.session_state:
     st.session_state['conversation_history'] = [
         {"role": "system", "content": "You are a friendly interviewer."},
@@ -16,7 +17,10 @@ if 'conversation_history' not in st.session_state:
         {"role": "assistant", "content": "Got you! Please send me your Job Description."},
     ]
 if 'chat_history' not in st.session_state:
-    st.session_state['chat_history'] = ["Hey!"]
+    st.session_state['chat_history'] = ["Hey! Please enter your job description below then we can start the mock interview!"]
+#User input the job description
+    user_input = st.text_area("label goes here")
+    conversation_history.append({"role": "user", "content": user_input})
 
 # Continue the conversation
 def continue_conversation(conversation_history, user_message):
