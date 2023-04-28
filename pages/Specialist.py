@@ -17,8 +17,8 @@ import sqlalchemy
 
 
 
-# input GUI for user
-col1, col2 = st.columns(2)
+tab1, tab2, tab3 = st.tabs(["Internal", "External", "Private"])
+
 
 def save_wav(audio_data):
     nchannels = 1
@@ -57,7 +57,7 @@ def initialize():
     chain = load_qa_chain(llm, chain_type="stuff")
 
     return docsearch, chain
-docsearch, chain  = initialize()
+
 
 
 # with col1:
@@ -76,9 +76,8 @@ docsearch, chain  = initialize()
 #     st.write("Click the button below to get the transcript")
 #     if st.button("Transcript"):
 #        st.write(transcribe(audio_data)['text'])
-col1, col2 = st.columns(2)
-# _,col3,_ = st.columns([1,8,1])
-with col1: 
+with tab1: 
+    docsearch, chain  = initialize()
     form = st.form(key='myform1')
     query = form.text_input( "Enter some text 👇",
         placeholder="Write your prompt here...",
@@ -93,8 +92,11 @@ if submit:
         st.write(docs)
     st.write(result)
 
-# _,col4,_ = st.columns([1,8,1])
-with col2: 
+with tab2:
+    st.write('Hubspot')
+
+
+with tab3: 
     form = st.form(key='myform')
     query = form.text_input( "Enter some text 👇",
         placeholder="Write your prompt here...",
