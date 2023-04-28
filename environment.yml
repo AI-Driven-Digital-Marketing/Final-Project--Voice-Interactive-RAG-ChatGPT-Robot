@@ -4,7 +4,6 @@ dependencies:
   - pandas
   - pip
   - pip:
-    - matplotlib
     - pinecone-client
     - openai
     - streamlit-audiorecorder
