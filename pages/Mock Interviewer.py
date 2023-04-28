@@ -75,7 +75,7 @@ def TTS(text):
 
 
 
-st.title("Audio Recorder")
+# st.title("Audio Recorder")
 audio_data = st_audiorec()
 if audio_data is not None:
     # display audio data as received on the backend
