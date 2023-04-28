@@ -16,5 +16,6 @@ dependencies:
     - pymysql
     - chromadb
     - pexpect
+    - numpy
 
  
