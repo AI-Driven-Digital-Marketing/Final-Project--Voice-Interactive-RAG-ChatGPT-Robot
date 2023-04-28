@@ -149,14 +149,14 @@ with tab1:
         placeholder="Write your prompt here...",
     )
     submit = form.form_submit_button('Submit')
-if submit:
-    # get context, additional info from pinecone
-    docs = docsearch.similarity_search(query= query, include_metadata=True)
-    # call openai API
-    result = chain.run(input_documents=docs, question=query)
-    with st.expander("See searched docs here."):
-        st.write(docs)
-    st.write(result)
+    if submit:
+        # get context, additional info from pinecone
+        docs = docsearch.similarity_search(query= query, include_metadata=True)
+        # call openai API
+        result = chain.run(input_documents=docs, question=query)
+        with st.expander("See searched docs here."):
+            st.write(docs)
+        st.write(result)
 
 with tab2:
     st.write('Hubspot')
@@ -165,14 +165,14 @@ with tab2:
         placeholder="Write your prompt here...",
     )
     submit2 = form.form_submit_button('Submit')
-if submit2:
-    # get context, additional info from pinecone
-    query_with_contexts = retrieve(query2)
-    # call openai API
-    output = complete(query_with_contexts)
-    with st.expander("See contexts prompt from the RAG"):
-        st.write(query_with_contexts)
-    st.write(output)
+    if submit2:
+        # get context, additional info from pinecone
+        query_with_contexts = retrieve(query2)
+        # call openai API
+        output = complete(query_with_contexts)
+        with st.expander("See contexts prompt from the RAG"):
+            st.write(query_with_contexts)
+        st.write(output)
 
 with tab3: 
     form = st.form(key='myform3')
@@ -180,18 +180,18 @@ with tab3:
         placeholder="Write your prompt here...",
     )
     submit = form.form_submit_button('Submit')
-if submit:
-    SQL_KEY = st.secrets['sql_key']
-    OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
-    db_uri = "mysql+pymysql:" + SQL_KEY
-    db = SQLDatabase.from_uri(db_uri)
-    llm = OpenAI(temperature=0, openai_api_key= OPENAI_API_KEY)
-    db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True) 
-    # , return_intermediate_steps=True
-    result = db_chain.run(query)
-    # with st.expander("See Intermediate Steps here."):
-    #     st.write(result["intermediate_steps"])
-    st.write(result)
+    if submit:
+        SQL_KEY = st.secrets['sql_key']
+        OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
+        db_uri = "mysql+pymysql:" + SQL_KEY
+        db = SQLDatabase.from_uri(db_uri)
+        llm = OpenAI(temperature=0, openai_api_key= OPENAI_API_KEY)
+        db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True) 
+        # , return_intermediate_steps=True
+        result = db_chain.run(query)
+        # with st.expander("See Intermediate Steps here."):
+        #     st.write(result["intermediate_steps"])
+        st.write(result)
 
 
 
