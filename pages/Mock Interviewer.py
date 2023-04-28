@@ -92,9 +92,14 @@ if len(st.session_state['chat_history']) == 1:
 
 # st.title("Audio Recorder")
 # audio_data = st_audiorec()
-audio_bytes = audio_recorder()
-if audio_bytes:
-    st.audio(audio_bytes, format="audio/wav")
+
+# audio_bytes = audio_recorder()
+# if audio_bytes:
+#     st.audio(audio_bytes, format="audio/wav")
+
+audio_data = audio_recorder()
+if audio_data:
+    st.audio(audio_data, format="audio/wav")
 
 
 if audio_data is not None:
