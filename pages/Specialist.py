@@ -60,22 +60,7 @@ def initialize():
 
 
 
-# with col1:
-#     st.title("Audio Recorder")
-#     st.write("Click the button below to record your voice")
-#     audio_data = st_audiorec()
-
-#     if audio_data is not None:
-#         # display audio data as received on the backend
-#         save_wav(audio_data)
-#         #st.audio(audio_data, format='audio/wav')
-    
-# with col2:
-
-#     st.title("Transcript")
-#     st.write("Click the button below to get the transcript")
-#     if st.button("Transcript"):
-#        st.write(transcribe(audio_data)['text'])
+#
 with tab1: 
     docsearch, chain  = initialize()
     form = st.form(key='myform1')
