@@ -11,7 +11,9 @@ from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.vectorstores import Chroma, Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain import SQLDatabase, SQLDatabaseChain
 import langchain
+import sqlalchemy
 
 
 
@@ -94,3 +96,19 @@ if submit:
     with st.expander("See searched docs here."):
         st.write(docs)
     st.write(result)
+
+_,col4,_ = st.columns([1,8,1])
+with col4: 
+    form = st.form(key='myform')
+    query = form.text_input( "Enter some text 👇",
+        placeholder="Write your prompt here...",
+    )
+    submit = form.form_submit_button('Submit')
+if submit:
+    db = SQLDatabase.from_uri("mysql+pymysql://studentuser:DBMS_spring2023@129.10.79.239:3306/classicmodels")
+    llm = OpenAI(temperature=0, openai_api_key= OPENAI_API_KEY)
+    db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True) 
+    result = db_chain.run(query)
+    st.write(result)
+
+
