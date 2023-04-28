@@ -102,6 +102,7 @@ with col2:
     submit = form.form_submit_button('Submit')
 if submit:
     SQL_KEY = st.secrets['sql_key']
+    OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
     db_uri = "mysql+pymysql:" + SQL_KEY
     db = SQLDatabase.from_uri(db_uri)
     llm = OpenAI(temperature=0, openai_api_key= OPENAI_API_KEY)
