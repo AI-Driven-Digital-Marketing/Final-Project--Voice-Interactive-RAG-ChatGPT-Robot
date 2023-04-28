@@ -81,7 +81,7 @@ def initialize_CRM():
     # connect to index
     index = pinecone.Index(index_name)
     return index
-index = initialize_CRM()
+#index = initialize_CRM()
 
 def complete(prompt):
     # query text-davinci-003
