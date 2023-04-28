@@ -26,7 +26,10 @@ if 'chat_history' not in st.session_state:
     upload_text = st.text_area(label='Paste the job description here:', placeholder = 'accept job description')
 
     if st.button('Upload'):
-        st.session_state['conversation_history'].append({"role": "user", "content": upload_text})
+        # st.session_state['conversation_history'].append({"role": "user", "content": upload_text})
+        answer = continue_conversation( st.session_state['conversation_history'], upload_text)
+    st.write(answer)
+
         
 
 # Continue the conversation
