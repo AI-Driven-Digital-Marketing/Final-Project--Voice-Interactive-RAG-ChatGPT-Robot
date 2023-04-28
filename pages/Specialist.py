@@ -50,6 +50,7 @@ def initialize():
         environment=st.secrets['PINECONE_API_ENV']  # may be different, check at app.pinecone.io
     )
     OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
+    SQL_KEY = st.secrets['sql_key']
     embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
     docsearch = Pinecone.from_existing_index(index_name, embeddings)
     # connect to index
@@ -101,7 +102,7 @@ with col2:
     )
     submit = form.form_submit_button('Submit')
 if submit:
-    db = SQLDatabase.from_uri("")
+    db = SQLDatabase.from_uri("mysql+pymysql:"+SQL_KEY )
     llm = OpenAI(temperature=0, openai_api_key= OPENAI_API_KEY)
     db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True) 
     result = db_chain.run(query)
