@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from st_custom_components import st_audiorec
 import wave
 import openai
 import pinecone
@@ -40,6 +39,7 @@ def transcribe(audio):
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
     return transcript
 
+@st.cache_resource
 def initialize():
     index_name = "langchain2"
 
@@ -57,14 +57,15 @@ def initialize():
 
     return docsearch, chain
 
+@st.cache_resource
 def initialize_CRM():
     openai.api_key = st.secrets['openai_key']
-    index_name = 'openai-youtube-transcriptions'
+    index_name = 'openai-embedding-data'
 
     # initialize connection to pinecone (get API key at app.pinecone.io)
     pinecone.init(
         api_key=st.secrets['pinecone_key'],
-        environment=st.secrets['pinecone_env']  # may be different, check at app.pinecone.io
+        environment=st.secrets['pinecone_region']  # may be different, check at app.pinecone.io
     )
 
     # check if index already exists (it shouldn't if this is first time)
