@@ -81,7 +81,6 @@ if len(st.session_state['chat_history']) == 1:
     if st.button('Upload'):
         # st.session_state['conversation_history'].append({"role": "user", "content": upload_text})
         st.session_state['chat_history'].append(upload_text)
-        message(st.session_state['chat_history'][-1],is_user=True)
         answer = continue_conversation( st.session_state['conversation_history'], upload_text)
         st.session_state['chat_history'].append(answer)
         out_audio = TTS(answer)
