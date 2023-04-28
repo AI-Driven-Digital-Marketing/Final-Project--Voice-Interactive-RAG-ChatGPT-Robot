@@ -36,7 +36,7 @@ st.write(st.session_state)
 
 if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = ["Hey! Please enter your job description below then we can start the mock interview!"]
-#User input the job description
+    #User input the job description
     upload_text = st.text_area(label='Paste the job description here:', placeholder = 'accept job description')
 
     if st.button('Upload'):
@@ -45,7 +45,7 @@ if 'chat_history' not in st.session_state:
         st.write(answer)
 
         
-        
+
 # save user input audio as .wav file
 def save_wav(audio_data):
     nchannels = 1
