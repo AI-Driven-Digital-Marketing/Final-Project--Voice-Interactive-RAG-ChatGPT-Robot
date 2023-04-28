@@ -101,7 +101,7 @@ with col2:
     )
     submit = form.form_submit_button('Submit')
 if submit:
-    db = SQLDatabase.from_uri("mysql+pymysql://studentuser:DBMS_spring2023@129.10.79.239:3306/classicmodels")
+    db = SQLDatabase.from_uri("")
     llm = OpenAI(temperature=0, openai_api_key= OPENAI_API_KEY)
     db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True) 
     result = db_chain.run(query)
