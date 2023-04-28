@@ -16,6 +16,6 @@ dependencies:
     - langchain 
     - pymysql
     - chromadb
-    
+    - pexpect
 
  
