@@ -6,7 +6,9 @@ import wave
 import openai
 import pinecone
 import os 
-import pymysql
+#import pymysql
+from langchain.llms import OpenAI
+from langchain.chains.question_answering import load_qa_chain
 # import langchain
 # from langchain.llms import OpenAI
 # from langchain.chains.question_answering import load_qa_chain
@@ -118,24 +120,24 @@ def retrieve(query):
             )
     return prompt
 
-with col1:
-    st.title("Audio Recorder")
-    st.write("Click the button below to record your voice")
-    audio_data = st_audiorec()
+# with col1:
+#     st.title("Audio Recorder")
+#     st.write("Click the button below to record your voice")
+#     audio_data = st_audiorec()
 
-    if audio_data is not None:
-        # display audio data as received on the backend
-        save_wav(audio_data)
-        #st.audio(audio_data, format='audio/wav')
+#     if audio_data is not None:
+#         # display audio data as received on the backend
+#         save_wav(audio_data)
+#         #st.audio(audio_data, format='audio/wav')
         
 
 
-with col2:
+# with col2:
 
-    st.title("Transcript")
-    st.write("Click the button below to get the transcript")
-    if st.button("Transcript"):
-       st.write(transcribe(audio_data)['text'])
+#     st.title("Transcript")
+#     st.write("Click the button below to get the transcript")
+#     if st.button("Transcript"):
+#        st.write(transcribe(audio_data)['text'])
     
 
 
