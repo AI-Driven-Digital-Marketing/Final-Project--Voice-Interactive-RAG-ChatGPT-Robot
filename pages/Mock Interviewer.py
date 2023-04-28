@@ -99,6 +99,7 @@ if len(st.session_state['chat_history']) == 1:
 
 audio_data = audio_recorder()
 if audio_data:
+    st.write("""User's Recording: """)
     st.audio(audio_data, format="audio/wav")
 
 
@@ -106,12 +107,14 @@ if audio_data is not None:
     # display audio data as received on the backend
     save_wav(audio_data)
     #st.audio(audio_data, format='audio/wav')
+
 if st.button('Chat'):
     transcript = transcribe(audio_data)['text']
     st.session_state['chat_history'].append(str(transcript))
     answer = continue_conversation( st.session_state['conversation_history'], transcript)
     st.session_state['chat_history'].append(answer)
     out_audio = TTS(answer)
+    st.write('Interview Robots:')
     st.audio(out_audio)
 
 
