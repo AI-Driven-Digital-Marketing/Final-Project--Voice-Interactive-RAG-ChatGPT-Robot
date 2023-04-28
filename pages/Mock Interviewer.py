@@ -97,9 +97,9 @@ if len(st.session_state['chat_history']) == 1:
 # if audio_bytes:
 #     st.audio(audio_bytes, format="audio/wav")
 
+st.write("""User's Recording: """)
 audio_data = audio_recorder()
 if audio_data:
-    st.write("""User's Recording: """)
     st.audio(audio_data, format="audio/wav")
 
 
@@ -114,6 +114,11 @@ if st.button('Chat'):
     answer = continue_conversation( st.session_state['conversation_history'], transcript)
     st.session_state['chat_history'].append(answer)
     out_audio = TTS(answer)
+    # st.write('Interview Robots:')
+    # st.audio(out_audio)
+
+#Title test
+if out_audio:
     st.write('Interview Robots:')
     st.audio(out_audio)
 
