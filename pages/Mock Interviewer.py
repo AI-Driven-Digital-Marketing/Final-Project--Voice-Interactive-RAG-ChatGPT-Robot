@@ -19,8 +19,11 @@ if 'conversation_history' not in st.session_state:
 if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = ["Hey! Please enter your job description below then we can start the mock interview!"]
 #User input the job description
-    user_input = st.text_area("label goes here")
-    conversation_history.append({"role": "user", "content": user_input})
+    upload_text = st.text_area(label='Paste the job description here:', placeholder = 'accept job description')
+
+    if st.button('Upload'):
+        st.session_state['conversation_history'].append({"role": "user", "content": upload_text})
+        
 
 # Continue the conversation
 def continue_conversation(conversation_history, user_message):
