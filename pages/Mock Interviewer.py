@@ -5,6 +5,7 @@ import wave
 import openai
 import boto3
 from streamlit_chat import message
+from audio_recorder_streamlit import audio_recorder
 
 # Continue the conversation
 def continue_conversation(conversation_history, user_message):
@@ -85,11 +86,17 @@ if len(st.session_state['chat_history']) == 1:
         st.session_state['chat_history'].append(answer)
         out_audio = TTS(answer)
         st.audio(out_audio)
+    
 
 
 
 # st.title("Audio Recorder")
-audio_data = st_audiorec()
+# audio_data = st_audiorec()
+audio_bytes = audio_recorder()
+if audio_bytes:
+    st.audio(audio_bytes, format="audio/wav")
+
+
 if audio_data is not None:
     # display audio data as received on the backend
     save_wav(audio_data)
