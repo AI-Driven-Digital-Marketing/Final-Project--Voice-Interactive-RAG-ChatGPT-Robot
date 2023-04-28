@@ -40,7 +40,6 @@ def transcribe(audio):
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
     return transcript
 
-@st.cache_resource
 def initialize():
     index_name = "langchain2"
 
@@ -58,7 +57,6 @@ def initialize():
 
     return docsearch, chain
 
-@st.cache_resource
 def initialize_CRM():
     openai.api_key = st.secrets['openai_key']
     index_name = 'openai-youtube-transcriptions'
@@ -81,7 +79,7 @@ def initialize_CRM():
     # connect to index
     index = pinecone.Index(index_name)
     return index
-#index = initialize_CRM()
+
 
 def complete(prompt):
     # query text-davinci-003
@@ -160,6 +158,7 @@ with tab1:
 
 with tab2:
     st.write('Hubspot')
+    index = initialize_CRM()
     form = st.form(key='myform2')
     query2 = form.text_input( "Enter some text 👇",
         placeholder="Write your prompt here...",
