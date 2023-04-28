@@ -107,7 +107,11 @@ if submit:
     db = SQLDatabase.from_uri(db_uri)
     llm = OpenAI(temperature=0, openai_api_key= OPENAI_API_KEY)
     db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True) 
+    # , return_intermediate_steps=True
     result = db_chain.run(query)
+    # with st.expander("See Intermediate Steps here."):
+    #     st.write(result["intermediate_steps"])
     st.write(result)
+
 
 
