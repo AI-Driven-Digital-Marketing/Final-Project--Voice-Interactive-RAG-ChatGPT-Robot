@@ -79,7 +79,7 @@ docsearch, chain  = initialize()
 col1, col2 = st.columns(2)
 # _,col3,_ = st.columns([1,8,1])
 with col1: 
-    form = st.form(key='myform')
+    form = st.form(key='myform1')
     query = form.text_input( "Enter some text 👇",
         placeholder="Write your prompt here...",
     )
