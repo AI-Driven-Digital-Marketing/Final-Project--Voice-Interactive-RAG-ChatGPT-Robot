@@ -39,6 +39,7 @@ def transcribe(audio):
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
     return transcript
 
+@st.cache_resource
 def initialize():
     index_name = "langchain2"
 
@@ -56,6 +57,7 @@ def initialize():
 
     return docsearch, chain
 
+@st.cache_resource
 def initialize_CRM():
     openai.api_key = st.secrets['openai_key']
     index_name = 'openai-embedding-data'
