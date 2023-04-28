@@ -71,9 +71,6 @@ if 'conversation_history' not in st.session_state:
         {"role": "assistant", "content": "Got you! Please send me your Job Description."},
     ]
 
-#Test
-st.write(st.session_state)
-
 if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = ["Hey! Please enter your job description below then we can start the mock interview!"]
 
