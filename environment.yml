@@ -1,6 +1,5 @@
 name: TorchEnv
 dependencies:
-  - numpy
   - pandas
   - pip
   - pip:
@@ -16,6 +15,6 @@ dependencies:
     - pymysql
     - chromadb
     - pexpect
-    - numpy
+
 
  
