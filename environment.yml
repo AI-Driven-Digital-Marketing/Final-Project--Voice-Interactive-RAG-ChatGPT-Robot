@@ -15,6 +15,7 @@ dependencies:
     - pymysql
     - chromadb
     - pexpect
+    - audio-recorder-streamlit
 
 
  
