@@ -21,34 +21,6 @@ def continue_conversation(conversation_history, user_message):
     
     return assistant_message
 
-if 'conversation_history' not in st.session_state:
-    st.session_state['conversation_history'] = [
-        {"role": "system", "content": "You are a friendly interviewer."},
-        {"role": "user", "content": """Let's do mock interview! You ask me a question, then I answer your question, 
-                                        you ask more follow up question or start a new question.
-                                        I will send you a job description and everything should be around that,
-                                        excepts behavior question."""},
-        {"role": "assistant", "content": "Got you! Please send me your Job Description."},
-    ]
-
-#Test
-st.write(st.session_state)
-
-if 'chat_history' not in st.session_state:
-    st.session_state['chat_history'] = ["Hey! Please enter your job description below then we can start the mock interview!"]
-
-if len(st.session_state['chat_history']) == 1:
-#User input the job description
-    upload_text = st.text_area(label='Paste the job description here:', placeholder = 'accept job description')
-
-    if st.button('Upload'):
-        # st.session_state['conversation_history'].append({"role": "user", "content": upload_text})
-        st.session_state['chat_history'].append('upload_text')
-        message(st.session_state['chat_history'][-1],is_user=True)
-        answer = continue_conversation( st.session_state['conversation_history'], upload_text)
-        message(answer)
-        
-
 # save user input audio as .wav file
 def save_wav(audio_data):
     nchannels = 1
@@ -88,6 +60,35 @@ def TTS(text):
     # file.close()
     return speech
 
+
+if 'conversation_history' not in st.session_state:
+    st.session_state['conversation_history'] = [
+        {"role": "system", "content": "You are a friendly interviewer."},
+        {"role": "user", "content": """Let's do mock interview! You ask me a question, then I answer your question, 
+                                        you ask more follow up question or start a new question.
+                                        I will send you a job description and everything should be around that,
+                                        excepts behavior question."""},
+        {"role": "assistant", "content": "Got you! Please send me your Job Description."},
+    ]
+
+#Test
+st.write(st.session_state)
+
+if 'chat_history' not in st.session_state:
+    st.session_state['chat_history'] = ["Hey! Please enter your job description below then we can start the mock interview!"]
+
+if len(st.session_state['chat_history']) == 1:
+#User input the job description
+    upload_text = st.text_area(label='Paste the job description here:', placeholder = 'accept job description')
+
+    if st.button('Upload'):
+        # st.session_state['conversation_history'].append({"role": "user", "content": upload_text})
+        st.session_state['chat_history'].append(upload_text)
+        message(st.session_state['chat_history'][-1],is_user=True)
+        answer = continue_conversation( st.session_state['conversation_history'], upload_text)
+        st.session_state['chat_history'].append(answer)
+        out_audio = TTS(answer)
+        st.audio(out_audio)
 
 
 
