@@ -47,8 +47,8 @@ def initialize():
         api_key=st.secrets['PINECONE_API_KEY'],
         environment=st.secrets['PINECONE_API_ENV']  # may be different, check at app.pinecone.io
     )
-    OPENAI_API_KEY = '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'
-    embeddings = st.secrets['OPENAI_API_KEY']
+    OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
+    embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
     docsearch = Pinecone.from_existing_index(index_name, embeddings)
     # connect to index
     llm = OpenAI(temperature=0.5, openai_api_key=OPENAI_API_KEY )
