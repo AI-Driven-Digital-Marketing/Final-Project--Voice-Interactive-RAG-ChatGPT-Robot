@@ -108,6 +108,6 @@ if submit:
     llm = OpenAI(temperature=0, openai_api_key= OPENAI_API_KEY)
     db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True) 
     result = db_chain.run(query)
-    st.write(result)
+    st.markdown(result)
 
 
