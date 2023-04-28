@@ -6,6 +6,20 @@ import openai
 import boto3
 from streamlit_chat import message
 
+# Continue the conversation
+def continue_conversation(conversation_history, user_message):
+    conversation_history.append({"role": "user", "content": user_message})
+
+
+    response = openai.ChatCompletion.create(
+      model="gpt-3.5-turbo",
+      messages=conversation_history
+    )
+
+    assistant_message = response.choices[0].message.content
+    conversation_history.append({"role": "assistant", "content": assistant_message})
+    
+    return assistant_message
 
 if 'conversation_history' not in st.session_state:
     st.session_state['conversation_history'] = [
@@ -28,25 +42,10 @@ if 'chat_history' not in st.session_state:
     if st.button('Upload'):
         # st.session_state['conversation_history'].append({"role": "user", "content": upload_text})
         answer = continue_conversation( st.session_state['conversation_history'], upload_text)
-    st.write(answer)
+        st.write(answer)
 
         
-
-# Continue the conversation
-def continue_conversation(conversation_history, user_message):
-    conversation_history.append({"role": "user", "content": user_message})
-
-
-    response = openai.ChatCompletion.create(
-      model="gpt-3.5-turbo",
-      messages=conversation_history
-    )
-
-    assistant_message = response.choices[0].message.content
-    conversation_history.append({"role": "assistant", "content": assistant_message})
-    
-    return assistant_message
-
+        
 # save user input audio as .wav file
 def save_wav(audio_data):
     nchannels = 1
