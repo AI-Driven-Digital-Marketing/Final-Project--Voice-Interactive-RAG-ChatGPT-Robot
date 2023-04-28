@@ -69,19 +69,15 @@ docsearch, chain  = initialize()
 #         # display audio data as received on the backend
 #         save_wav(audio_data)
 #         #st.audio(audio_data, format='audio/wav')
-        
-
-
+    
 # with col2:
 
 #     st.title("Transcript")
 #     st.write("Click the button below to get the transcript")
 #     if st.button("Transcript"):
 #        st.write(transcribe(audio_data)['text'])
-    
-
-
-_,col3,_ = st.columns([1,8,1])
+col3, col4 = st.columns(2)
+# _,col3,_ = st.columns([1,8,1])
 with col3: 
     form = st.form(key='myform')
     query = form.text_input( "Enter some text 👇",
@@ -97,7 +93,7 @@ if submit:
         st.write(docs)
     st.write(result)
 
-_,col4,_ = st.columns([1,8,1])
+# _,col4,_ = st.columns([1,8,1])
 with col4: 
     form = st.form(key='myform')
     query = form.text_input( "Enter some text 👇",
