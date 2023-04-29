@@ -18,7 +18,7 @@
 ### 2.Architecture
 
 <div align=center>
-<img src="src/Final Project (1).jpg" width="750px">
+<img src="src/Final Project (2).jpg" width="750px">
 </div>
 
 ### 3.Tech Stacks
