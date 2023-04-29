@@ -1,18 +1,14 @@
 import streamlit as st
-import numpy as np
-import pandas as pd
 import wave
 import openai
 import pinecone
-import os 
-import pymysql
 from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.vectorstores import Chroma, Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain import SQLDatabase, SQLDatabaseChain
-import langchain
-import sqlalchemy
+from audio_recorder_streamlit import audio_recorder
+
 
 
 
@@ -148,14 +144,20 @@ with tab1:
     query = form.text_input( "Let's ask any questions about crpto or nanomedicine/covid 👇",
         placeholder="Write your prompt here...",
     )
-    submit = form.form_submit_button('Submit')
+    submit = form.form_submit_button('Submit')   
+    audio_data1 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
     if submit:
+        if audio_data1 is not None:
+            # display audio data as received on the backend
+            save_wav(audio_data1)
+        input_query =  transcribe(audio_data1)['text'] if audio_data1 else query
         # get context, additional info from pinecone
-        docs = docsearch.similarity_search(query= query, include_metadata=True)
+        docs = docsearch.similarity_search(query= input_query, include_metadata=True)
         # call openai API
         result = chain.run(input_documents=docs, question=query)
         with st.expander("See searched docs here."):
             st.write(docs)
+            st.write('Prompt : '+input_query)
         st.write(result)
 
 with tab2:
