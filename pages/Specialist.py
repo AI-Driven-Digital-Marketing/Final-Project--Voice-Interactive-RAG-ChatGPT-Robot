@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 import wave
 import openai
 import pinecone
@@ -209,7 +210,11 @@ with tab3:
         result = db_chain(query)
         with st.expander("See Generative SQL Query here."):
             st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]))
-        st.write(result["intermediate_steps"][1])
+        result_data = result["intermediate_steps"][1]
+        df = pd.DataFrame(
+            result_data,
+            columns=('col %d' % i for i in range(len(result_data[0]))))
+        st.write(df)
 
 
 

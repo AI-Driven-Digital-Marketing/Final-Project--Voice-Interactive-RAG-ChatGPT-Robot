@@ -1,6 +1,5 @@
 import streamlit as st
 import numpy as np
-#from st_custom_components import st_audiorec
 import wave
 import openai
 import boto3
