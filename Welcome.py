@@ -38,7 +38,7 @@ with tab1:
     st.markdown('## Let us Talking with Data by Generative AI!')
     st.video('src/pexels-rostislav-uzunov-7385122.mp4')
 
-      '''
+    '''
         ### Key Problems!
        - According to statistics, in 2021, Over 60 million (about 18.7% of the total), Chinese, French, Arabic, German, Russian, Korean, Vietnamese and so on. 
        - Therefore, it can be said that the United States has a considerable number of multilingual speakers, and a revolutionary product  should break down the language barrier(eg: Tiktok, youtube, Chrome, Office365). That is the 1st pain point the product needs to solve.
@@ -48,7 +48,7 @@ with tab1:
         '''
     col1, col2 = st.columns(2,gap = "medium")
     with col1:
-        '''
+    '''
         #### Limitations:
         1. Timeliness：The corpus GPT pretrained until 2021, which means that it could not give users a good answer if this information/data after 2021.
 
@@ -61,7 +61,7 @@ with tab1:
         -------------- RUN Your Business ---------------->>>>
         '''
     with col2:
-        '''
+    '''
         ### Solutions
         - KPMG helps you give solid data suggestions from multiple dimensions including customers, company status, and market analysis to help your business grow at a high speed.
         - Know your customer! Know your business! And Empower one-step solution to make **GROWTH & REVENUE**!
