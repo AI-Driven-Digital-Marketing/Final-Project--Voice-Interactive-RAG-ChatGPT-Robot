@@ -185,17 +185,10 @@ with tab2:
 
 with tab3:
     st.write('Enterprise Private/Production Database Query (Internal-Private)')
-    #audio_data3 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
-    audio_data3 = None
-    default_input3= ''
-    if audio_data3 is not None:
-        # display audio data as received on the backend
-        save_wav(audio_data3)
-        default_input3 = transcribe(audio_data3)['text']
     form = st.form(key='myform3')
     query = form.text_input( "Query your data based on business requirment 👇",
         placeholder="Write your prompt here...",
-        value= default_input3
+        value= default_input
     )
     submit = form.form_submit_button('Submit')
     if submit:
