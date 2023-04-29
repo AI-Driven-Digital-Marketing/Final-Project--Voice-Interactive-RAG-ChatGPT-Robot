@@ -192,7 +192,7 @@ with tab3:
         llm = OpenAI(temperature=0, openai_api_key= OPENAI_API_KEY)
         db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True,return_intermediate_steps=True) 
         result = db_chain(query)
-        with st.expander("See Intermediate Steps here."):
+        with st.expander("See Generative SQL Query here."):
             st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]))
         st.write(result["intermediate_steps"][1])
 
