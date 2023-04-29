@@ -140,24 +140,25 @@ def retrieve(query):
 with tab1: 
     st.write('External Data(Fintech & Healthcare))')
     docsearch, chain  = initialize()
+    audio_data1 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
+    default_input1= ''
+    if audio_data1 is not None:
+        # display audio data as received on the backend
+        save_wav(audio_data1)
+        default_input1 = transcribe(audio_data1)['text']
     form = st.form(key='myform1')
     query = form.text_input( "Let's ask any questions about crpto or nanomedicine/covid 👇",
         placeholder="Write your prompt here...",
+        value= default_input1
     )
     submit = form.form_submit_button('Submit')   
-    audio_data1 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
     if submit:
-        if audio_data1 is not None:
-            # display audio data as received on the backend
-            save_wav(audio_data1)
-        input_query =  transcribe(audio_data1)['text'] if audio_data1 else query
         # get context, additional info from pinecone
-        docs = docsearch.similarity_search(query= input_query, include_metadata=True)
+        docs = docsearch.similarity_search(query= query, include_metadata=True)
         # call openai API
         result = chain.run(input_documents=docs, question=query)
         with st.expander("See searched docs here."):
             st.write(docs)
-            st.write('Prompt : '+input_query)
         st.write(result)
 
 with tab2:
