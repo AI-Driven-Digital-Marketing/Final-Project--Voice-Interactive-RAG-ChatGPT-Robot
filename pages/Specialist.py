@@ -140,6 +140,21 @@ def retrieve(query):
 default_input= ''
 audio_data = audio_recorder(pause_threshold=3.0, icon_size = '2x')
 with tab1: 
+    with st.expander("About this app"):
+
+        st.write(" ")
+
+        st.markdown(
+        """
+        ##### 1. Objective: 
+        Use natural language to do the QA. Get the answer from specific realm research journals (Fintech and Healthcare) and industry news from 2022 to present.
+        ##### 2. Quick Start!:
+        Wring the prompt in the text input area/Record your business requirement audio to transcript and click submit.
+        ##### 3. Anticipated Result: 
+        TYou could get the answer about crypto news and nanomedicine state-of-art research. We use langchain with pinecone to Embedding multiple data source into PinecoreDB and connect the GPT to do the Q&A chatbot
+
+        """
+        )
     st.write('External Data(Fintech & Healthcare))')
     docsearch, chain  = initialize()
     if audio_data is not None:
@@ -162,6 +177,22 @@ with tab1:
         st.write(result)
 
 with tab2:
+    with st.expander("About this app"):
+
+        st.write(" ")
+
+        st.markdown(
+        """
+        ##### 1. Objective: 
+        - The design of the CRM system QA, internal resources, and community result in their separation despite their interrelated information. 
+        - To reduce internal users' time spent on information search, the robot continuously consumes the latest information about HubSpot.
+        - By doing so, the robot replaces the traditional information search, allowing users to easily access related information from AI.
+        ##### 2. Quick Start!:
+        Wring the prompt in the text input area/Record your business requirement audio to transcript and click submit.
+        ##### 3. Anticipated Result: 
+        The hubspot robot should return you the information available on its internal resources.
+        """
+        )
     st.write('Hubspot Company Knowledge Base (Internal-Public)')
     index = initialize_CRM()
     if audio_data is not None:
@@ -190,11 +221,11 @@ with tab3:
 
         st.markdown(
         """
-        #### 1. Objective: 
-        Use natural language to query the  enterprise private/production databases and output the 
-        #### 2. Quick Start!:
+        ##### 1. Objective: 
+        Use natural language to query the  enterprise private/production databases and output the SQL code.
+        ##### 2. Quick Start!:
         Wring the prompt in the text input area/Record your business requirement audio to transcript and click submit.
-        #### 3. Anticipated Result: 
+        ##### 3. Anticipated Result: 
         Then you could query the MySQL Database data based on any department business requirement  in remote MySQL server connection by Incorporating OpenAi GPT model with Langchain to return the SQL query and Result.
         
         """
