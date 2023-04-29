@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 import wave
 import openai
 import pinecone
@@ -164,7 +165,8 @@ with tab1:
 with tab2:
     st.write('Hubspot Company Knowledge Base (Internal-Public)')
     index = initialize_CRM()
-    audio_data2 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
+    #audio_data2 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
+    audio_data2 = None
     default_input2= ''
     if audio_data2 is not None:
         # display audio data as received on the backend
@@ -187,7 +189,8 @@ with tab2:
 
 with tab3:
     st.write('Enterprise Private/Production Database Query (Internal-Private)')
-    audio_data3 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
+    #audio_data3 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
+    audio_data3 = None
     default_input3= ''
     if audio_data3 is not None:
         # display audio data as received on the backend
@@ -209,7 +212,11 @@ with tab3:
         result = db_chain(query)
         with st.expander("See Generative SQL Query here."):
             st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]))
-        st.write(result["intermediate_steps"][1])
+        result_data = result["intermediate_steps"][1]
+        df = pd.DataFrame(
+            result_data,
+            columns=('col %d' % i for i in range(len(result_data[0]))))
+        st.write(df)
 
 
 
