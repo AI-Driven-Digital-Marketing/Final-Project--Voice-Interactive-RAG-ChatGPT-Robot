@@ -61,6 +61,12 @@ def TTS(text):
     # file.close()
     return speech
 
+with st.expander("See explanation"):
+    st.write("""
+        Introduction: 
+        Mock Interview Robots is a tool that utilizes Open AI API and prompt engineering to offer an immersive interview experience for job seekers. Users input a job description and the robot acts as a friendly interviewer, asking specific technical and behavioral questions. With chat API, streamlit, and TTS, users can interact with the robot and record their answers, preparing for real interviews.
+    """)
+
 
 if 'conversation_history' not in st.session_state:
     st.session_state['conversation_history'] = [
