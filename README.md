@@ -12,6 +12,9 @@
 | **--->** [2. Project Proposal](https://docs.google.com/document/d/1JxmkjvF0FirF_-8B6mbn_vKlumKrOJr3HAZmBniSMq4/edit#heading=h.7sa4zxkhmsum) |
 
 | **--->** [3. Final Project Document](https://docs.google.com/document/d/1Z6KWxwOuMLzaXAaJ5z1QDW636wtJuhWx3TBL0i9yT00/edit#heading=h.pc6o519hiyjo) |
+
+| **--->** [4. Introduction Video](https://youtu.be/9nmixVTcxk4) |
+
 ### 2.Architecture
 
 <div align=center>
