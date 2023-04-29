@@ -48,7 +48,7 @@ with tab1:
         '''
     col1, col2 = st.columns(2,gap = "medium")
     with col1:
-    '''
+        '''
         #### Limitations:
         1. Timeliness：The corpus GPT pretrained until 2021, which means that it could not give users a good answer if this information/data after 2021.
 
@@ -61,7 +61,7 @@ with tab1:
         -------------- RUN Your Business ---------------->>>>
         '''
     with col2:
-    '''
+        '''
         ### Solutions
         - KPMG helps you give solid data suggestions from multiple dimensions including customers, company status, and market analysis to help your business grow at a high speed.
         - Know your customer! Know your business! And Empower one-step solution to make **GROWTH & REVENUE**!
