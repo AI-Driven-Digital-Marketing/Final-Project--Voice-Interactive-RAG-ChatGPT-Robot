@@ -62,8 +62,16 @@ def TTS(text):
 
 with st.expander("See explanation"):
     st.write("""
-        Introduction: 
-        Mock Interview Robots is a tool that utilizes Open AI API and prompt engineering to offer an immersive interview experience for job seekers. Users input a job description and the robot acts as a friendly interviewer, asking specific technical and behavioral questions. With chat API, streamlit, and TTS, users can interact with the robot and record their answers, preparing for real interviews.
+        Introduction: \n
+        Mock Interview Robots is a tool that utilizes Open AI API and prompt engineering to offer an immersive interview experience for job seekers.
+        Users input a job description and the robot acts as a friendly interviewer, asking specific technical and behavioral questions. With chat API, streamlit, and TTS,
+        users can interact with the robot and record their answers, preparing for real interviews.\n
+        Technical: \n
+        The robot will be engineered initially to set the default role as a friendly interviewer interviewer and integrate previous conversations into its programming.
+        Streamlit will capture voice recordings that will be converted to text through whipser and analyzed by the model.
+        The model's reply will be translated to voice, generating a realistic simulation of an interview conversation.\n
+        Additional data structures(hashmap) are created to seperately store characteristics of robot, conversation history and chat history.
+
     """)
 
 
