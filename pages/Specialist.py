@@ -164,9 +164,16 @@ with tab1:
 with tab2:
     st.write('Hubspot Company Knowledge Base (Internal-Public)')
     index = initialize_CRM()
+    audio_data2 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
+    default_input2= ''
+    if audio_data2 is not None:
+        # display audio data as received on the backend
+        save_wav(audio_data2)
+        default_input2 = transcribe(audio_data2)['text']
     form = st.form(key='myform2')
     query2 = form.text_input( "Ask how to use CRM 👇",
         placeholder="Write your prompt here...",
+        value= default_input2
     )
     submit2 = form.form_submit_button('Submit')
     if submit2:
@@ -180,9 +187,16 @@ with tab2:
 
 with tab3:
     st.write('Enterprise Private/Production Database Query (Internal-Private)')
+    audio_data3 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
+    default_input3= ''
+    if audio_data3 is not None:
+        # display audio data as received on the backend
+        save_wav(audio_data3)
+        default_input3 = transcribe(audio_data3)['text']
     form = st.form(key='myform3')
     query = form.text_input( "Query your data based on business requirment 👇",
         placeholder="Write your prompt here...",
+        value= default_input3
     )
     submit = form.form_submit_button('Submit')
     if submit:
