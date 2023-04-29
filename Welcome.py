@@ -63,15 +63,19 @@ with tab1:
     with col2:
         '''
         ### Solutions
-        - KPMG helps you give solid data suggestions from multiple dimensions including customers, company status, and market analysis to help your business grow at a high speed.
-        - Know your customer! Know your business! And Empower one-step solution to make **GROWTH & REVENUE**!
-        ####        ---  "You can be the DATA GROWTH HACKER FAST!!"
+        1. Multi Language transcribing interface:
+        2. Mock Interview Chatbot 
+        3. Enterprise Solution Specialist QA/Query
+            3.1 Domain data knowledge DB QA (External)
+            3.2 Company internal CRM data QA (Internal-Public)
+            3.3 Enterprise Database natural language Query/SQL generating (Internal-Private)
+
         '''    
 with tab3:
     
     col1, col2 = st.columns(2)
     with col1:
-       st.markdown('## Build your Own Data Report！')
+       st.markdown('## Build your Own Data QA ChatBOT！')
        '''
         1. **Deep understanding your data profile!**
             KYC,KYB and Know your data!
