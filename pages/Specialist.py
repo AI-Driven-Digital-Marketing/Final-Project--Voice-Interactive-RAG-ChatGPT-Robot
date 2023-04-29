@@ -25,14 +25,14 @@ def save_wav(audio_data):
     compname = "not compressed"
 
     # Create a new .wav file and write the audio data to it
-    with wave.open("audio_file.wav", "wb") as audio_file:
+    with wave.open("audio_file_spec.wav", "wb") as audio_file:
         audio_file.setparams((nchannels, sampwidth, framerate, nframes, comptype, compname))
         audio_file.writeframes(audio_data)
 
 def transcribe(audio):
     # model = initialize()
     openai.api_key = st.secrets['OPENAI_API_KEY']
-    audio_file= open("audio_file.wav", "rb")
+    audio_file= open("audio_file_spec.wav", "rb")
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
     return transcript
 
