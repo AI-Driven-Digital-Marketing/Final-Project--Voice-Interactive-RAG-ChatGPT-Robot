@@ -60,7 +60,7 @@ def TTS(text):
     # file.close()
     return speech
 
-with st.expander("See explanation"):
+with st.expander("Overview of Mock Interview Robots"):
     st.write("""
         Introduction: \n
         Mock Interview Robots is a tool that utilizes Open AI API and prompt engineering to offer an immersive interview experience for job seekers.
