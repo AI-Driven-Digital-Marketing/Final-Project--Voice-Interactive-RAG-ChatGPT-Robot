@@ -205,7 +205,7 @@ with tab3:
         st.write(type(result_data))
         st.write(result_data)
         df = pd.DataFrame(
-            result_data,
+            eval(result_data),
             columns=('col %d' % i for i in range(len(result_data[0]))))
         st.write(df)
 
