@@ -16,7 +16,7 @@ import sqlalchemy
 
 
 
-tab1, tab2, tab3 = st.tabs(["Domain Data Q&A", "Internal Knowledge Base Q&A", "Private Database Query"])
+tab1, tab2, tab3 = st.tabs(["Domain Data Q&A", "Knowledge Base Q&A", "Private Database Query"])
 
 
 def save_wav(audio_data):
@@ -176,7 +176,7 @@ with tab2:
         st.write(output)
 
 with tab3:
-    st.write('Enterprise Private Database Query (Internal-Private)')
+    st.write('Enterprise Private/Production Database Query (Internal-Private)')
     form = st.form(key='myform3')
     query = form.text_input( "Query your data based on business requirment 👇",
         placeholder="Write your prompt here...",
