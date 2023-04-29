@@ -137,20 +137,19 @@ def retrieve(query):
     return prompt
 
 
-
+default_input= ''
+audio_data = audio_recorder(pause_threshold=3.0, icon_size = '2x')
 with tab1: 
     st.write('External Data(Fintech & Healthcare))')
     docsearch, chain  = initialize()
-    audio_data1 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
-    default_input1= ''
-    if audio_data1 is not None:
+    if audio_data is not None:
         # display audio data as received on the backend
-        save_wav(audio_data1)
-        default_input1 = transcribe(audio_data1)['text']
+        save_wav(audio_data)
+        default_input = transcribe(audio_data)['text']
     form = st.form(key='myform1')
     query = form.text_input( "Let's ask any questions about crpto or nanomedicine/covid 👇",
         placeholder="Write your prompt here...",
-        value= default_input1
+        value= default_input
     )
     submit = form.form_submit_button('Submit')   
     if submit:
@@ -165,17 +164,14 @@ with tab1:
 with tab2:
     st.write('Hubspot Company Knowledge Base (Internal-Public)')
     index = initialize_CRM()
-    #audio_data2 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
-    audio_data2 = None
-    default_input2= ''
-    if audio_data2 is not None:
+    if audio_data is not None:
         # display audio data as received on the backend
-        save_wav(audio_data2)
-        default_input2 = transcribe(audio_data2)['text']
+        save_wav(audio_data)
+        default_input = transcribe(audio_data)['text']
     form = st.form(key='myform2')
     query2 = form.text_input( "Ask how to use CRM 👇",
         placeholder="Write your prompt here...",
-        value= default_input2
+        value= default_input
     )
     submit2 = form.form_submit_button('Submit')
     if submit2:
