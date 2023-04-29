@@ -16,7 +16,7 @@ import sqlalchemy
 
 
 
-tab1, tab2, tab3 = st.tabs(["Internal", "External", "Private"])
+tab1, tab2, tab3 = st.tabs(["Domain Data Q&A", "Internal Knowledge Base Q&A", "Private Database Query"])
 
 
 def save_wav(audio_data):
@@ -142,9 +142,10 @@ def retrieve(query):
 
 
 with tab1: 
+    st.write('External Data(Fintech & Healthcare))')
     docsearch, chain  = initialize()
     form = st.form(key='myform1')
-    query = form.text_input( "Enter some text 👇",
+    query = form.text_input( "Let's ask any questions about crpto or nanomedicine/covid 👇",
         placeholder="Write your prompt here...",
     )
     submit = form.form_submit_button('Submit')
@@ -158,10 +159,10 @@ with tab1:
         st.write(result)
 
 with tab2:
-    st.write('Hubspot')
+    st.write('Hubspot Company Knowledge Base (Internal-Public)')
     index = initialize_CRM()
     form = st.form(key='myform2')
-    query2 = form.text_input( "Enter some text 👇",
+    query2 = form.text_input( "Ask how to use CRM 👇",
         placeholder="Write your prompt here...",
     )
     submit2 = form.form_submit_button('Submit')
@@ -174,9 +175,10 @@ with tab2:
             st.write(query_with_contexts)
         st.write(output)
 
-with tab3: 
+with tab3:
+    st.write('Enterprise Private Database Query (Internal-Private)')
     form = st.form(key='myform3')
-    query = form.text_input( "Enter some text 👇",
+    query = form.text_input( "Query your data based on business requirment 👇",
         placeholder="Write your prompt here...",
     )
     submit = form.form_submit_button('Submit')
