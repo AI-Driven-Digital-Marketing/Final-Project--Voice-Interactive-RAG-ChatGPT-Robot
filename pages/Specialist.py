@@ -202,6 +202,8 @@ with tab3:
         with st.expander("See Generative SQL Query here."):
             st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]))
         result_data = result["intermediate_steps"][1]
+        st.write(type(result_data))
+        st.write(result_data)
         df = pd.DataFrame(
             result_data,
             columns=('col %d' % i for i in range(len(result_data[0]))))
