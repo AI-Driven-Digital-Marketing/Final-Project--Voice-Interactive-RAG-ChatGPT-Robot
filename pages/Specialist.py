@@ -165,7 +165,7 @@ with tab1:
 with tab2:
     st.write('Hubspot Company Knowledge Base (Internal-Public)')
     index = initialize_CRM()
-    audio_data2 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
+    #audio_data2 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
     default_input2= ''
     if audio_data2 is not None:
         # display audio data as received on the backend
@@ -188,7 +188,7 @@ with tab2:
 
 with tab3:
     st.write('Enterprise Private/Production Database Query (Internal-Private)')
-    audio_data3 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
+    #audio_data3 = audio_recorder(pause_threshold=4.0, icon_size = '2x')
     default_input3= ''
     if audio_data3 is not None:
         # display audio data as received on the backend
