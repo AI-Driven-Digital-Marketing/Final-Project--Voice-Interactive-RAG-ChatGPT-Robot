@@ -35,13 +35,19 @@ with tab2:
        '''
     st.image('src/22391676133642_.pic.jpg')
 with tab1:
-    st.markdown('## Data Growth Hacker!')
+    st.markdown('## Let us Talking with Data by Generative AI!')
     st.video('src/pexels-rostislav-uzunov-7385122.mp4')
 
     '''
     ### Key Problems!
-    1. Does your business facing a Data swamp?
-    2. Does you always difficult to find insight from complex data, uncleaned data, and data that cannot provide real-time analysis?
+   According to statistics, in 2021, Over 60 million (about 18.7% of the total), Chinese, French, Arabic, German, Russian, Korean, Vietnamese and so on. Therefore, it can be said that the United States has a considerable number of multilingual speakers, and a revolutionary product  should break down the language barrier(eg: Tiktok, youtube, Chrome, Office365). That is the 1st pain point the product needs to solve.
+   On the other side, with ChatGPT arise, we witnessed the LLM’s power, but it still has two 3 technical limitations need to pay attention to, that’s 2nd painpoint:
+   Data Input:
+    1: Timeliness：The corpus GPT pretrained until 2021, which means that it could not give users a good answer if this information/data after 2021.
+    2. Specific Domain：The corpus GPT pretrained comes from general Corpus in internet, but it just include external data instead of some core internal data owned by some specific domain’s and specific organizations(company, government, university)
+    Prompt Input:
+    3. Prompt Engineering: The prompt engineering is very useful in specific domains, especially in AIGC domain(Art, music, essay design etc.) But, it has a high bar that users could not control, so they usually just get not optimal results. We need to let users easily use and get an optimal result if products go to enterprise level and goto market.
+Therefore, based on the aforementioned 2 main pain points and requirements and 3  limitations of LLM. We would develop an AI product that functions as a “Stepstone(AGI)” Or “Lego Block” 
    
     '''
     col1, col2 = st.columns(2,gap = "medium")
