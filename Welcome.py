@@ -50,27 +50,18 @@ with tab1:
     with col1:
         '''
         #### Limitations:
-
-    1: Timeliness：The corpus GPT pretrained until 2021, which means that it could not give users a good answer if this information/data after 2021.
+    1. Timeliness：The corpus GPT pretrained until 2021, which means that it could not give users a good answer if this information/data after 2021.
+    
     2. Specific Domain：The corpus GPT pretrained comes from general Corpus in internet, but it just include external data instead of some core internal data owned by some specific domain’s and specific organizations(company, government, university)
     Prompt Input.
+    
     3. Prompt Engineering: The prompt engineering is very useful in specific domains, especially in AIGC domain(Art, music, essay design etc.) But, it has a high bar that users could not control, so they usually just get not optimal results. We need to let users easily use and get an optimal result if products go to enterprise level and goto market.
 Therefore, based on the aforementioned 2 main pain points and requirements and 3  limitations of LLM. We would develop an AI product that functions as a “Stepstone(AGI)” Or “Lego Block” 
         
         -------------- RUN Your Business ---------------->>>>
         '''
     with col2:
-        '''
-        ------
-        #### 2.KYB:  
-        **(Know your Business)**
-        1. What industry is the key account strategy area that your business needs to focus on？
-        2. Where are the components and growth points of the company's business？
-        3. Specify your brand's profitability and financial situation!
-        4. How should your brand do product differentiation strategy in market share?
-        '''
-    '''
-    -------
+'''
     ### Solutions
     - KPMG helps you give solid data suggestions from multiple dimensions including customers, company status, and market analysis to help your business grow at a high speed.
     - Know your customer! Know your business! And Empower one-step solution to make **GROWTH & REVENUE**!
