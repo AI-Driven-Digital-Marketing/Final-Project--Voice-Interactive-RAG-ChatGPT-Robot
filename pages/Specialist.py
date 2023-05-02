@@ -176,43 +176,43 @@ with tab1:
             st.write(docs)
         st.write(result)
 
-with tab2:
-    with st.expander("About this app"):
+# with tab2:
+#     with st.expander("About this app"):
 
-        st.write(" ")
+#         st.write(" ")
 
-        st.markdown(
-        """
-        ##### 1. Objective: 
-        - The design of the CRM system QA, internal resources, and community result in their separation despite their interrelated information. 
-        - To reduce internal users' time spent on information search, the robot continuously consumes the latest information about HubSpot.
-        - By doing so, the robot replaces the traditional information search, allowing users to easily access related information from AI.
-        ##### 2. Quick Start!:
-        Wring the prompt in the text input area/Record your business requirement audio to transcript and click submit.
-        ##### 3. Anticipated Result: 
-        The hubspot robot should return you the information available on its internal resources.
-        """
-        )
-    st.write('Hubspot Company Knowledge Base (Internal-Public)')
-#     index = initialize_CRM()
-    if audio_data is not None:
-        # display audio data as received on the backend
-        save_wav(audio_data)
-        default_input = transcribe(audio_data)['text']
-    form = st.form(key='myform2')
-    query2 = form.text_input( "Ask how to use CRM 👇",
-        placeholder="Write your prompt here...",
-        value= default_input
-    )
-    submit2 = form.form_submit_button('Submit')
-    if submit2:
-        # get context, additional info from pinecone
-        query_with_contexts = retrieve(query2)
-        # call openai API
-        output = complete(query_with_contexts)
-        with st.expander("See contexts prompt from the RAG"):
-            st.write(query_with_contexts)
-        st.write(output)
+#         st.markdown(
+#         """
+#         ##### 1. Objective: 
+#         - The design of the CRM system QA, internal resources, and community result in their separation despite their interrelated information. 
+#         - To reduce internal users' time spent on information search, the robot continuously consumes the latest information about HubSpot.
+#         - By doing so, the robot replaces the traditional information search, allowing users to easily access related information from AI.
+#         ##### 2. Quick Start!:
+#         Wring the prompt in the text input area/Record your business requirement audio to transcript and click submit.
+#         ##### 3. Anticipated Result: 
+#         The hubspot robot should return you the information available on its internal resources.
+#         """
+#         )
+#     st.write('Hubspot Company Knowledge Base (Internal-Public)')
+# #     index = initialize_CRM()
+#     if audio_data is not None:
+#         # display audio data as received on the backend
+#         save_wav(audio_data)
+#         default_input = transcribe(audio_data)['text']
+#     form = st.form(key='myform2')
+#     query2 = form.text_input( "Ask how to use CRM 👇",
+#         placeholder="Write your prompt here...",
+#         value= default_input
+#     )
+#     submit2 = form.form_submit_button('Submit')
+#     if submit2:
+#         # get context, additional info from pinecone
+#         query_with_contexts = retrieve(query2)
+#         # call openai API
+#         output = complete(query_with_contexts)
+#         with st.expander("See contexts prompt from the RAG"):
+#             st.write(query_with_contexts)
+#         st.write(output)
 
 with tab3:
     with st.expander("About this app"):
