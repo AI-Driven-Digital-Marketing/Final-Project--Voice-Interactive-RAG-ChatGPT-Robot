@@ -54,29 +54,29 @@ def initialize():
 
     return docsearch, chain
 
-@st.cache_resource
-def initialize_CRM():
-    openai.api_key = st.secrets['openai_key']
-    index_name = 'openai-embedding-data'
+# @st.cache_resource
+# def initialize_CRM():
+#     openai.api_key = st.secrets['openai_key']
+#     index_name = 'openai-embedding-data'
 
-    # initialize connection to pinecone (get API key at app.pinecone.io)
-    pinecone.init(
-        api_key=st.secrets['pinecone_key'],
-        environment=st.secrets['pinecone_region']  # may be different, check at app.pinecone.io
-    )
+#     # initialize connection to pinecone (get API key at app.pinecone.io)
+#     pinecone.init(
+#         api_key=st.secrets['pinecone_key'],
+#         environment=st.secrets['pinecone_region']  # may be different, check at app.pinecone.io
+#     )
 
-    # check if index already exists (it shouldn't if this is first time)
-    if index_name not in pinecone.list_indexes():
-        # if does not exist, create index
-        pinecone.create_index(
-            index_name,
-            dimension=1536,
-            metric='cosine',
-            metadata_config={'indexed': ['title']}
-        )
-    # connect to index
-    index = pinecone.Index(index_name)
-    return index
+#     # check if index already exists (it shouldn't if this is first time)
+#     if index_name not in pinecone.list_indexes():
+#         # if does not exist, create index
+#         pinecone.create_index(
+#             index_name,
+#             dimension=1536,
+#             metric='cosine',
+#             metadata_config={'indexed': ['title']}
+#         )
+#     # connect to index
+#     index = pinecone.Index(index_name)
+#     return index
 
 
 def complete(prompt):
