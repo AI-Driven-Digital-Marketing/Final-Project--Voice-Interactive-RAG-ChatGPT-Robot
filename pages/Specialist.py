@@ -194,7 +194,7 @@ with tab2:
         """
         )
     st.write('Hubspot Company Knowledge Base (Internal-Public)')
-    index = initialize_CRM()
+#     index = initialize_CRM()
     if audio_data is not None:
         # display audio data as received on the backend
         save_wav(audio_data)
