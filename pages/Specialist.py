@@ -39,8 +39,7 @@ def transcribe(audio):
 @st.cache_resource
 def initialize():
     index_name = "langchain2"
-
-    initialize connection to pinecone (get API key at app.pinecone.io)
+  #  initialize connection to pinecone (get API key at app.pinecone.io)
     pinecone.init(
         api_key=st.secrets['PINECONE_API_KEY'],
         environment=st.secrets['PINECONE_API_ENV']  # may be different, check at app.pinecone.io
