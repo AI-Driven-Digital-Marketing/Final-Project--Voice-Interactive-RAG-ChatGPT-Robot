@@ -1,4 +1,4 @@
-# Final-Project--Voice-Interactive-RAG-ChatGPT-Robot
+# ODSC-Project--Voice-Interactive-RAG-ChatGPT-Robot
 
 [![author](https://img.shields.io/badge/Author-Rayden_Xu-blue.svg)](https://www.linkedin.com/in/rundong-xu-269012230/) 
 
