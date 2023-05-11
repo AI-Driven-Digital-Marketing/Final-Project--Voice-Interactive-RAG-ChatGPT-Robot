@@ -2,6 +2,10 @@
 
 [![author](https://img.shields.io/badge/Author-Rayden_Xu-blue.svg)](https://www.linkedin.com/in/rundong-xu-269012230/) 
 
+<div align=center>
+<img src="src/Landing_page.jpg" width="750px">
+</div>
+
 
  Voice-Interactive-RAG-ChatGPT-Robot with domain knowledge
 ### 1.Quick Portral
