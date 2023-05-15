@@ -17,6 +17,7 @@ dependencies:
     - pexpect
     - audio-recorder-streamlit
     - streamlit-audiorecorder
+    - flask
 
 
  
