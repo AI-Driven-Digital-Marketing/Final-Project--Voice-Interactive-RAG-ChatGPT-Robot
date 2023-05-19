@@ -249,7 +249,7 @@ with tab3:
             st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]))
         result_data = result["intermediate_steps"][1]
         df = pd.DataFrame(
-            eval(result))
+            eval(result_data))
         st.write(df)
 
 
