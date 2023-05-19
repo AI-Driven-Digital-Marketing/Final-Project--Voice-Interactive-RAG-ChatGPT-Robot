@@ -247,10 +247,10 @@ with tab3:
         result = db_chain(query)
         with st.expander("See Generative SQL Query here."):
             st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]))
-        # result_data = result["intermediate_steps"][1]
+        result_data = result["intermediate_steps"][1]
         # df = pd.DataFrame(
         #     eval(result_data))
-        # st.write(df)
+        st.write(result_data )
 
 
 
