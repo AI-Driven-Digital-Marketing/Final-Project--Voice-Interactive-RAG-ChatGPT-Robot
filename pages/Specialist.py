@@ -168,7 +168,8 @@ with tab1:
     submit = form.form_submit_button('Submit')   
     if submit:
         # get context, additional info from pinecone
-        docs = docsearch.similarity_search(query= query, include_metadata=True)
+        docs = docsearch.similarity_search(query= query)
+        # , include_metadata=True
         # call openai API
         result = chain.run(input_documents=docs, question=query)
         with st.expander("See searched docs here."):
