@@ -252,9 +252,9 @@ with tab3:
             eval(result_data))
         st.write('Table Result:')
         st.write(df)
-    # elif submit and query == 'Show Schema Info':
-    #     with st.expander("See DDL here."):
-    #         st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]["table_info"]))    
-    # else:
-    #     st.write('Table Result:')
+    elif submit and query == 'Show Schema Info':
+        with st.expander("See DDL here."):
+            st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]["table_info"]))    
+    else:
+        st.write('Table Result:')
 
