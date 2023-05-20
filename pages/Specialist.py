@@ -252,6 +252,6 @@ with tab3:
         result_data = result["intermediate_steps"][3]
         df = pd.DataFrame(
             eval(result_data))
+        st.write('Table Result:')
         st.write(df)
-        with st.expander("See DDL here."):
-            st.write(result["intermediate_steps"])
+
