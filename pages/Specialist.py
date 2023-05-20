@@ -237,7 +237,7 @@ with tab3:
         value= default_input
     )
     submit = form.form_submit_button('Submit')
-    if submit and query != 'Show Schema Info':
+    if submit and query is not None:
         SQL_KEY = st.secrets['sql_key']
         OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
         db_uri = "mysql+pymysql:" + SQL_KEY
@@ -253,7 +253,8 @@ with tab3:
         st.write('Table Result:')
         st.write(df)
         
-    elif submit and query == 'Show Schema Info':
+    # elif submit and query == 'Show Schema Info':
+    else:
         SQL_KEY = st.secrets['sql_key']
         OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
         db_uri = "mysql+pymysql:" + SQL_KEY
@@ -263,5 +264,3 @@ with tab3:
         result = db_chain(query)
         with st.expander("See DDL here."):
             st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]["table_info"]))    
-    else:
-        st.write('Table Info')
