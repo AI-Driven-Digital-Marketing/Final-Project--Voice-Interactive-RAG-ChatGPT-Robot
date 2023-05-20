@@ -246,8 +246,8 @@ with tab3:
         db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True,return_intermediate_steps=True) 
         result = db_chain(query)
         with st.expander("See Generative SQL Query here."):
-            st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]))
-        result_data = result["intermediate_steps"][1]
+            st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][1]))
+        result_data = result["intermediate_steps"]
         # df = pd.DataFrame(
         #     eval(result_data))
         st.write(result_data )
