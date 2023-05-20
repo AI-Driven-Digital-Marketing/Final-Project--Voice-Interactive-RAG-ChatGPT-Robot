@@ -252,7 +252,15 @@ with tab3:
             eval(result_data))
         st.write('Table Result:')
         st.write(df)
+        
     elif submit and query == 'Show Schema Info':
+        SQL_KEY = st.secrets['sql_key']
+        OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
+        db_uri = "mysql+pymysql:" + SQL_KEY
+        db = SQLDatabase.from_uri(db_uri)
+        llm = OpenAI(temperature=0, openai_api_key= OPENAI_API_KEY)
+        db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True,return_intermediate_steps=True) 
+        result = db_chain(query)
         with st.expander("See DDL here."):
             st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]["table_info"]))    
     else:
