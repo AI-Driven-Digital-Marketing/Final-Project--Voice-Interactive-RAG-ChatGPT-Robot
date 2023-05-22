@@ -48,11 +48,15 @@ if uploaded_file:
             "chat_history": history
         }
         result = agent(inputs)
-        response = result["response"]
+        
+        response = ""
+        if "choices" in result:
+            response = result["choices"][0]["message"]["content"]
+        elif "response" in result:
+            response = result["response"]
+            
         history.append((query, response))
         return response
-
-
 
 
 
