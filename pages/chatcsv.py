@@ -90,7 +90,9 @@ if uploaded_file:
     if uploaded_file:
         df = pd.read_csv(uploaded_file)
         st.write("Uploaded DataFrame:")
-        st.dataframe(df)
+        df2 = pd.DataFrame(
+            eval(df))
+        st.write(df2)
 
     if st.session_state['generated']:
         with response_container:
