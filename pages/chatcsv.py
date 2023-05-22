@@ -34,10 +34,13 @@ user_api_key = st.sidebar.text_input(
 uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
 
 if uploaded_file:
-    data = pd.read_csv(uploaded_file)
+    temp_file = tempfile.NamedTemporaryFile(delete=False)
+    temp_file.write(uploaded_file.read())
 
     llm = ChatOpenAI(temperature=0, openai_api_key=user_api_key)
-    agent = create_csv_agent(llm=llm, path=uploaded_file.name, verbose=True)
+    agent = create_csv_agent(llm=llm, path=temp_file.name, verbose=True)
+
+    temp_file.close()
 
 
 
