@@ -37,7 +37,8 @@ if uploaded_file:
     data = pd.read_csv(uploaded_file)
 
     llm = ChatOpenAI(temperature=0, openai_api_key=user_api_key)
-    agent = create_csv_agent(llm=llm, path=data, verbose=True)
+    agent = create_csv_agent(llm=llm, path=uploaded_file.name, verbose=True)
+
 
 
     def conversational_chat(query, history):
