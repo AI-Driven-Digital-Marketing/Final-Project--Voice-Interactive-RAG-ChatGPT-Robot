@@ -54,9 +54,12 @@ if uploaded_file:
             response = result["choices"][0]["message"]["content"]
         elif "response" in result:
             response = result["response"]
+        elif "output" in result:
+            response = result["output"]
             
         history.append((query, response))
         return response
+
 
 
 
