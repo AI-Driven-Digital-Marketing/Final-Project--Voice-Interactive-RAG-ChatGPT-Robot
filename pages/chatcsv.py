@@ -42,12 +42,15 @@ if uploaded_file:
 
     temp_file.close()
 
-
-
     def conversational_chat(query, history):
-        result = agent({"text": query, "chat_history": history})
+        inputs = {
+            "input": query,
+            "chat_history": history
+        }
+        result = agent(inputs)
         history.append((query, result["response"]))
         return result["response"]
+
 
     if 'history' not in st.session_state:
         st.session_state['history'] = []
