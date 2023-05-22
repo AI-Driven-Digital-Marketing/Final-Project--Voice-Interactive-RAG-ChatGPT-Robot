@@ -4,6 +4,7 @@ dependencies:
   - pip
   - pip:
     - pinecone-client
+    - faiss-cpu
     - openai
     - streamlit-audiorecorder
     - ffmpeg-python
