@@ -33,20 +33,32 @@ user_api_key = st.sidebar.text_input(
 
 uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
 
+# if uploaded_file:
+
+#     # temp_file = tempfile.NamedTemporaryFile(delete=False)
+#     # temp_file.write(uploaded_file.read())
+
+#     # llm = ChatOpenAI(temperature=0, openai_api_key=user_api_key)
+#     # agent = create_csv_agent(llm=llm, e=df, verbose=True)
+
+
+#     # temp_file.close()
 if uploaded_file:
+    # Read CSV file
     df = pd.read_csv(uploaded_file)
+
+    # Save CSV file to a temporary file
+    temp_file = tempfile.NamedTemporaryFile(delete=False)
+    temp_file.write(uploaded_file.read())
+    temp_file.close()
 
     # Display DataFrame
     st.write("Uploaded CSV file:")
     st.dataframe(df)
-    # temp_file = tempfile.NamedTemporaryFile(delete=False)
-    # temp_file.write(uploaded_file.read())
 
+    # Create Langchain agent
     llm = ChatOpenAI(temperature=0, openai_api_key=user_api_key)
-    agent = create_csv_agent(llm=llm, dataframe=df, verbose=True)
-
-
-    temp_file.close()
+    agent = create_csv_agent(llm=llm, path=temp_file.name, verbose=True)
 
     def conversational_chat(query, history):
         inputs = {
