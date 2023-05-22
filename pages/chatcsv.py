@@ -86,11 +86,11 @@ if uploaded_file:
             output = conversational_chat(user_input, st.session_state['history'])
             st.session_state['past'].append(user_input)
             st.session_state['generated'].append(output)
-            
+
     if uploaded_file:
-    df = pd.read_csv(uploaded_file)
-    st.write("Uploaded DataFrame:")
-    st.dataframe(df)
+        df = pd.read_csv(uploaded_file)
+        st.write("Uploaded DataFrame:")
+        st.dataframe(df)
 
     if st.session_state['generated']:
         with response_container:
