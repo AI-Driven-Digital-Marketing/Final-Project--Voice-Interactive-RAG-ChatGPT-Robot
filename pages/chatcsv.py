@@ -44,12 +44,14 @@ if uploaded_file:
 
     def conversational_chat(query, history):
         inputs = {
-            "input": query,
+            "text": query,
             "chat_history": history
         }
         result = agent(inputs)
-        history.append((query, result["response"]))
-        return result["response"]
+        response = result["choices"][0]["message"]["content"]
+        history.append((query, response))
+        return response
+
 
 
     if 'history' not in st.session_state:
