@@ -1,5 +1,3 @@
-#pip install streamlit langchain openai faiss-cpu tiktoken
-
 import streamlit as st
 from io import StringIO
 import pandas as pd
@@ -13,27 +11,16 @@ from langchain.vectorstores import FAISS
 import tempfile
 
 
-import streamlit as st
-from streamlit_chat import message
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.chat_models import ChatOpenAI
-from langchain.chains import ConversationalRetrievalChain
-from langchain.vectorstores import FAISS
-from langchain.document_loaders.csv_loader import CSVLoader
-import tempfile
-from io import StringIO
-import pandas as pd
-
 st.expander("About this app")
 st.write(" ")
 st.markdown(
 """
 ##### 1. Objective: 
-Use natural language to query the  enterprise private/production databases and output the SQL code.
+Use natural language to query the enterprise private/production databases and output the SQL code.
 ##### 2. Quick Start!:
-Wring the prompt in the text input area/Record your business requirement audio to transcript and click submit.
+Write the prompt in the text input area/Record your business requirement audio to transcript and click submit.
 ##### 3. Anticipated Result: 
-Then you could query the MySQL Database data based on any department business requirement  in remote MySQL server connection by Incorporating OpenAi GPT model with Langchain to return the SQL query and Result.
+Then you can query the MySQL Database data based on any department business requirement in a remote MySQL server connection by incorporating OpenAI GPT model with Langchain to return the SQL query and results.
 
 """
 )
@@ -53,9 +40,9 @@ if uploaded_file:
     llm = ChatOpenAI(temperature=0, openai_api_key=user_api_key)
     agent = create_csv_agent(llm=llm, path=data, verbose=True)
 
-    def conversational_chat(query):
-        result = agent({"text": query, "chat_history": st.session_state['history']})
-        st.session_state['history'].append((query, result["response"]))
+    def conversational_chat(query, history):
+        result = agent({"text": query, "chat_history": history})
+        history.append((query, result["response"]))
         return result["response"]
 
     if 'history' not in st.session_state:
@@ -77,7 +64,7 @@ if uploaded_file:
             submit_button = st.form_submit_button(label='Send')
 
         if submit_button and user_input:
-            output = conversational_chat(user_input)
+            output = conversational_chat(user_input, st.session_state['history'])
             st.session_state['past'].append(user_input)
             st.session_state['generated'].append(output)
 
