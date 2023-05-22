@@ -19,6 +19,8 @@ dependencies:
     - audio-recorder-streamlit
     - streamlit-audiorecorder
     - flask
+    - tiktoken
+    - tabulate
 
 
  
