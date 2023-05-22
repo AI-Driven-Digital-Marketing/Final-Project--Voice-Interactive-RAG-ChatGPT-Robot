@@ -4,6 +4,7 @@ dependencies:
   - pip
   - pip:
     - pinecone-client
+    - faiss
     - openai
     - streamlit-audiorecorder
     - ffmpeg-python
@@ -18,6 +19,7 @@ dependencies:
     - audio-recorder-streamlit
     - streamlit-audiorecorder
     - flask
+    - streamlit_chat
 
 
  
