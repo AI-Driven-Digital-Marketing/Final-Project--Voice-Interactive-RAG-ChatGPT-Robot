@@ -24,6 +24,21 @@ import tempfile
 from io import StringIO
 import pandas as pd
 
+st.expander("About this app")
+st.write(" ")
+st.markdown(
+"""
+##### 1. Objective: 
+Use natural language to query the  enterprise private/production databases and output the SQL code.
+##### 2. Quick Start!:
+Wring the prompt in the text input area/Record your business requirement audio to transcript and click submit.
+##### 3. Anticipated Result: 
+Then you could query the MySQL Database data based on any department business requirement  in remote MySQL server connection by Incorporating OpenAi GPT model with Langchain to return the SQL query and Result.
+
+"""
+)
+
+
 user_api_key = st.sidebar.text_input(
     label="#### Your OpenAI API key 👇",
     placeholder="Paste your OpenAI API key, sk-",
