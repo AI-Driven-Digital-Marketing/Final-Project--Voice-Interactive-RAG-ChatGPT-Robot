@@ -44,13 +44,14 @@ if uploaded_file:
 
     def conversational_chat(query, history):
         inputs = {
-            "text": query,
+            "input": query,
             "chat_history": history
         }
         result = agent(inputs)
-        response = result["response"]["output"]
+        response = result["response"]
         history.append((query, response))
         return response
+
 
 
 
