@@ -108,8 +108,9 @@ with tab1:
                     message(st.session_state["generated"][i], key=str(i), avatar_style="thumbs")
 
 with tab2:
-    df2= pd.read_csv(temp_file.name)
-    st.write(df2)
+    with st.expander("Know your Data"):
+        df2= pd.read_csv(temp_file.name)
+        st.dataframe(df2)
 #     profile = profiling_transaction(df)
 #     st_profile_report(profile)
 #     st.download_button(
