@@ -65,7 +65,7 @@ with tab1:
             st.write("Please upload a CSV file to start the conversation.")
     with st.expander("Profiling your Data"):
         st.write('Profiling your Data')
-    with st.expander('Visalizing your Data')
+    with st.expander('Visalizing your Data'):
         st.write('Visalizing your Data')
         if uploaded_file:
             df2= pd.read_csv(temp_file.name,index_col=0)
