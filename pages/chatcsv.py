@@ -58,6 +58,8 @@ with tab1:
     with st.expander("Know your Data"):
         df2= pd.read_csv(temp_file.name,index_col=0)
         st.dataframe(df2)
+    with st.expander("Profiling your Data"):
+        st.write('Profiling your Data')
 #     profile = profiling_transaction(df)
 #     st_profile_report(profile)
 #     st.download_button(
