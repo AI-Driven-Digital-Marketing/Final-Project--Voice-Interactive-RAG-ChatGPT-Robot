@@ -10,7 +10,7 @@ from langchain.document_loaders.csv_loader import CSVLoader
 # from langchain.vectorstores import FAISS
 import tempfile
 # from datetime import datetime
-# import seaborn as sns
+# # import seaborn as sns
 # from pathlib import Path
 # from pandas_profiling import ProfileReport
 # from pandas_profiling.utils.cache import cache_zipped_file
@@ -39,16 +39,14 @@ user_api_key = st.sidebar.text_input(
 uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
 
 # st.dataframe(uploaded_file)
-df = pd.DataFrame(
-    eval(uploaded_file))
-st.write(df)
-# @st.cache_resource 
-# def profiling_transaction(uploaded_file): 
-#     df2 = pd.read_csv(up dloaded_file)
-#     profile = ProfileReport(
-#         df2, title="Profile Report", explorative=True
-#     )  
-#     return profile
+
+@st.cache_resource 
+def profiling_transaction(uploaded_file): 
+    df2 = pd.read_csv(up dloaded_file)
+    profile = ProfileReport(
+        df2, title="Profile Report", explorative=True
+    )  
+    return profile
 
 with tab1:
     if uploaded_file:
@@ -109,8 +107,11 @@ with tab1:
                     message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="big-smile")
                     message(st.session_state["generated"][i], key=str(i), avatar_style="thumbs")
 
-# with tab2:
-#     profile = profiling_transaction(df2)
+with tab2:
+    df = pd.DataFrame(
+eval(uploaded_file.read().decode("utf-8"))),
+    st.write(df)
+#     profile = profiling_transaction(df)
 #     st_profile_report(profile)
 #     st.download_button(
 #       'Download  Report',
