@@ -109,7 +109,7 @@ with tab1:
 
 with tab2:
     with st.expander("Know your Data"):
-        df2= pd.read_csv(temp_file.name)
+        df2= pd.read_csv(temp_file.name,index_col=1)
         st.dataframe(df2)
 #     profile = profiling_transaction(df)
 #     st_profile_report(profile)
