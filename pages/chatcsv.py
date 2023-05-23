@@ -7,14 +7,14 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain.document_loaders.csv_loader import CSVLoader
-from langchain.vectorstores import FAISS
+# from langchain.vectorstores import FAISS
 import tempfile
-from datetime import datetime
-import seaborn as sns
-from pathlib import Path
-from pandas_profiling import ProfileReport
-from pandas_profiling.utils.cache import cache_zipped_file
-from streamlit_pandas_profiling import st_profile_report
+# from datetime import datetime
+# import seaborn as sns
+# from pathlib import Path
+# from pandas_profiling import ProfileReport
+# from pandas_profiling.utils.cache import cache_zipped_file
+# from streamlit_pandas_profiling import st_profile_report
 
 
 st.expander("About this app")
@@ -40,13 +40,13 @@ uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
 df2=pd.read_csv(uploaded_file)
 st.dataframe(df2)
 
-@st.cache_resource 
-def profiling_transaction(uploaded_file): 
-    df2 = pd.read_csv(uploaded_file)
-    profile = ProfileReport(
-        df2, title="Profile Report", explorative=True
-    )  
-    return profile
+# @st.cache_resource 
+# def profiling_transaction(uploaded_file): 
+#     df2 = pd.read_csv(up dloaded_file)
+#     profile = ProfileReport(
+#         df2, title="Profile Report", explorative=True
+#     )  
+#     return profile
 
 with tab1:
     if uploaded_file:
