@@ -7,7 +7,6 @@ dependencies:
   - matplotlib
   - seaborn
   - openpyxl
-  - sweetviz
   - pip
   - pip:
     - pinecone-client
@@ -28,6 +27,7 @@ dependencies:
     - flask
     - tiktoken
     - tabulate
+    - sweetviz
 
 
 
