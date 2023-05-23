@@ -27,6 +27,7 @@ dependencies:
     - flask
     - tiktoken
     - tabulate
+    - seaborn
 
 
  
