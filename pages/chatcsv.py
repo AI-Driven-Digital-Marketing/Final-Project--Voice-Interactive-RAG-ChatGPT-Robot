@@ -37,8 +37,8 @@ user_api_key = st.sidebar.text_input(
     type="password")
 
 uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
-df2=pd.read_csv(uploaded_file)
-st.dataframe(df2)
+# df2=pd.read_csv(uploaded_file)
+st.dataframe(uploaded_file)
 
 # @st.cache_resource 
 # def profiling_transaction(uploaded_file): 
