@@ -21,7 +21,12 @@
 <img src="src/Final Project (2).jpg" width="750px">
 </div>
 
-### 3.Tech Stacks
+### 3.Backend 
+<div align=center>
+<img src="src/highlevel.drawio.png" width="750px">
+</div>
+
+### 4.Tech Stacks
 - Python
 - Streamlit
 - Pinecone
