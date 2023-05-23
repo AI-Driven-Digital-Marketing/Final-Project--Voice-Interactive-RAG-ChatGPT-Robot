@@ -1,6 +1,12 @@
 name: TorchEnv
 dependencies:
   - pandas
+  - pandas-profiling
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - openpyxl
   - pip
   - pip:
     - pinecone-client
