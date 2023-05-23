@@ -108,7 +108,7 @@ with tab1:
                     message(st.session_state["generated"][i], key=str(i), avatar_style="thumbs")
 
 with tab2:
-    df2 = pd.DataFrame(eval(uploaded_file.read().decode("utf-8")))
+    df2 = pd.DataFrame(eval(uploaded_file.read()))
     st.write(df2)
 #     profile = profiling_transaction(df)
 #     st_profile_report(profile)
