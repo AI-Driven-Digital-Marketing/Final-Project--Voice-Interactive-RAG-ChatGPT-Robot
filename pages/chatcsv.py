@@ -67,7 +67,7 @@ with tab1:
         st.write('Profiling your Data')
     with st.expander('Visualizing your Data'):
         st.write('Visualizing your Data')
-
+    if uploaded_file:
         # Let's inspect the DataFrame
         st.write("DataFrame:")
         st.write(df2)
