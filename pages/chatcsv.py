@@ -68,14 +68,28 @@ with tab1:
     with st.expander('Visualizing your Data'):
         st.write('Visualizing your Data')
         if uploaded_file:
-            analyze_report = sv.analyze(df2)
-            # Create an HTML report
-            analyze_report.show_html('report.html')
-            # Display the report in Streamlit
-            with open("report.html", 'r') as f:
-                html_string = f.read()
-            st.markdown(html_string, unsafe_allow_html=True)
-#     profile = profiling_transaction(df)
+            df2 = pd.read_csv(temp_file.name, index_col=0)
+            # Let's inspect the DataFrame
+            st.write("DataFrame:")
+            st.write(df2)
+            st.write("DataFrame column types:")
+            st.write(df2.dtypes)
+            
+            # If df2 seems fine, let's analyze it
+            try:
+                analyze_report = sv.analyze(df2)
+                # Create an HTML report
+                analyze_report.show_html('report.html')
+
+                # Display the report in Streamlit
+                with open("report.html", 'r') as f:
+                    html_string = f.read()
+                st.markdown(html_string, unsafe_allow_html=True)
+            except Exception as e:
+                st.write("Error in Sweetviz analyze:")
+                st.write(e)
+
+    #     profile = profiling_transaction(df)
 #     st_profile_report(profile)
 #     st.download_button(
 #       'Download  Report',
