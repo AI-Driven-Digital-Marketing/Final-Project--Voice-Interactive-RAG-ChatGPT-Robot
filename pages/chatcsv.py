@@ -8,7 +8,6 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain.document_loaders.csv_loader import CSVLoader
 import sweetviz as sv
-
 # from langchain.vectorstores import FAISS
 import tempfile
 # from datetime import datetime
@@ -66,12 +65,16 @@ with tab1:
             st.write("Please upload a CSV file to start the conversation.")
     with st.expander("Profiling your Data"):
         st.write('Profiling your Data')
-    with st.expander('Visalizing your Data'):
-        st.write('Visalizing your Data')
+    with st.expander('Visualizing your Data'):
+        st.write('Visualizing your Data')
         if uploaded_file:
-            df2= pd.read_csv(temp_file.name,index_col=0)
             analyze_report = sv.analyze(df2)
-            analyze_report.show_notebook()
+            # Create an HTML report
+            analyze_report.show_html('report.html')
+            # Display the report in Streamlit
+            with open("report.html", 'r') as f:
+                html_string = f.read()
+            st.markdown(html_string, unsafe_allow_html=True)
 #     profile = profiling_transaction(df)
 #     st_profile_report(profile)
 #     st.download_button(
