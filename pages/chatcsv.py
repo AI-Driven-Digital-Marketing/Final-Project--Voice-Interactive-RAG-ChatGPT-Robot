@@ -38,8 +38,13 @@ user_api_key = st.sidebar.text_input(
 
 uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
 if uploaded_file:
-        temp_file = tempfile.NamedTemporaryFile(delete=False)
-        temp_file.write(uploaded_file.read())
+    temp_file = tempfile.NamedTemporaryFile(delete=False)
+    temp_file.write(uploaded_file.read())
+
+    llm = ChatOpenAI(temperature=0, openai_api_key=user_api_key)
+    agent = create_csv_agent(llm=llm, path=temp_file.name, verbose=True)
+
+    temp_file.close()
 # st.dataframe(uploaded_file)
 
 # @st.cache_resource 
@@ -62,15 +67,6 @@ with tab1:
 #       help='Click  to get you own insights!'
 # )
 with tab2:
-    if uploaded_file:
-        temp_file = tempfile.NamedTemporaryFile(delete=False)
-        temp_file.write(uploaded_file.read())
-
-        llm = ChatOpenAI(temperature=0, openai_api_key=user_api_key)
-        agent = create_csv_agent(llm=llm, path=temp_file.name, verbose=True)
-
-        temp_file.close()
-
         def conversational_chat(query, history):
             inputs = {
                 "input": query,
