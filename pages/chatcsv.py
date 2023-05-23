@@ -37,7 +37,9 @@ user_api_key = st.sidebar.text_input(
     type="password")
 
 uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
-
+if uploaded_file:
+        temp_file = tempfile.NamedTemporaryFile(delete=False)
+        temp_file.write(uploaded_file.read())
 # st.dataframe(uploaded_file)
 
 # @st.cache_resource 
@@ -47,8 +49,19 @@ uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
 #         df2, title="Profile Report", explorative=True
 #     )  
 #     return profile
-
 with tab1:
+    with st.expander("Know your Data"):
+        df2= pd.read_csv(temp_file.name,index_col=0)
+        st.dataframe(df2)
+#     profile = profiling_transaction(df)
+#     st_profile_report(profile)
+#     st.download_button(
+#       'Download  Report',
+#       data=profile.to_html(),
+#         file_name = 'Transactions.html',
+#       help='Click  to get you own insights!'
+# )
+with tab2:
     if uploaded_file:
         temp_file = tempfile.NamedTemporaryFile(delete=False)
         temp_file.write(uploaded_file.read())
@@ -107,15 +120,3 @@ with tab1:
                     message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="big-smile")
                     message(st.session_state["generated"][i], key=str(i), avatar_style="thumbs")
 
-with tab2:
-    with st.expander("Know your Data"):
-        df2= pd.read_csv(temp_file.name,index_col=0)
-        st.dataframe(df2)
-#     profile = profiling_transaction(df)
-#     st_profile_report(profile)
-#     st.download_button(
-#       'Download  Report',
-#       data=profile.to_html(),
-#         file_name = 'Transactions.html',
-#       help='Click  to get you own insights!'
-# )
