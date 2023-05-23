@@ -45,7 +45,7 @@ if uploaded_file:
     agent = create_csv_agent(llm=llm, path=temp_file.name, verbose=True)
 
     temp_file.close()
-elif not uploaded_file:
+else:
     st.write("Please upload a CSV file to start the conversation.")
 # st.dataframe(uploaded_file)
 
