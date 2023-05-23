@@ -9,12 +9,12 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.document_loaders.csv_loader import CSVLoader
 # from langchain.vectorstores import FAISS
 import tempfile
-# from datetime import datetime
-# # import seaborn as sns
-# from pathlib import Path
-# from pandas_profiling import ProfileReport
-# from pandas_profiling.utils.cache import cache_zipped_file
-# from streamlit_pandas_profiling import st_profile_report
+from datetime import datetime
+# import seaborn as sns
+from pathlib import Path
+from pandas_profiling import ProfileReport
+from pandas_profiling.utils.cache import cache_zipped_file
+from streamlit_pandas_profiling import st_profile_report
 
 
 st.expander("About this app")
@@ -42,7 +42,7 @@ uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
 
 @st.cache_resource 
 def profiling_transaction(uploaded_file): 
-    df2 = pd.read_csv(up dloaded_file)
+    df2 = pd.read_csv(uploaded_file)
     profile = ProfileReport(
         df2, title="Profile Report", explorative=True
     )  
@@ -109,13 +109,13 @@ with tab1:
 
 with tab2:
     df = pd.DataFrame(
-eval(uploaded_file.read().decode("utf-8"))),
+eval(uploaded_file.read().decode("utf-8")))
     st.write(df)
-#     profile = profiling_transaction(df)
-#     st_profile_report(profile)
-#     st.download_button(
-#       'Download  Report',
-#       data=profile.to_html(),
-#         file_name = 'Transactions.html',
-#       help='Click  to get you own insights!'
-# )
+    profile = profiling_transaction(df)
+    st_profile_report(profile)
+    st.download_button(
+      'Download  Report',
+      data=profile.to_html(),
+        file_name = 'Transactions.html',
+      help='Click  to get you own insights!'
+)
