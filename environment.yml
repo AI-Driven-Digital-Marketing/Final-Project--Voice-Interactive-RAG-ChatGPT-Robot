@@ -28,6 +28,7 @@ dependencies:
     - tiktoken
     - tabulate
     - seaborn
+    - sweetviz
 
 
  
