@@ -45,8 +45,7 @@ if uploaded_file:
     agent = create_csv_agent(llm=llm, path=temp_file.name, verbose=True)
 
     temp_file.close()
-else:
-    st.write("Please upload a CSV file to start the conversation.")
+
 # st.dataframe(uploaded_file)
 
 # @st.cache_resource 
@@ -58,8 +57,11 @@ else:
 #     return profile
 with tab1:
     with st.expander("Know your Data"):
-        df2= pd.read_csv(temp_file.name,index_col=0)
-        st.dataframe(df2)
+        if uploaded_file:
+            df2= pd.read_csv(temp_file.name,index_col=0)
+            st.dataframe(df2)
+        else:
+            st.write("Please upload a CSV file to start the conversation.")
     with st.expander("Profiling your Data"):
         st.write('Profiling your Data')
 #     profile = profiling_transaction(df)
