@@ -10,12 +10,12 @@ from langchain.document_loaders.csv_loader import CSVLoader
 import sweetviz as sv
 # from langchain.vectorstores import FAISS
 import tempfile
-# from datetime import datetime
-# # import seaborn as sns
-# from pathlib import Path
-# from pandas_profiling import ProfileReport
-# from pandas_profiling.utils.cache import cache_zipped_file
-# from streamlit_pandas_profiling import st_profile_report
+from datetime import datetime
+import seaborn as sns
+from pathlib import Path
+from pandas_profiling import ProfileReport
+from pandas_profiling.utils.cache import cache_zipped_file
+from streamlit_pandas_profiling import st_profile_report
 
 
 st.expander("About this app")
@@ -63,8 +63,26 @@ with tab1:
             st.dataframe(df2)
         else:
             st.write("Please upload a CSV file to start the conversation.")
+
     with st.expander("Profiling your Data"):
-        st.write('Profiling your Data')
+        if uploaded_file:
+            st.write("Uploaded file name is: {}".format(uploaded_file.name))
+            df2= pd.read_csv(temp_file.name,index_col=0)
+            st.write("Dataframe created")
+            profile = ProfileReport(df2, title="Profile Report of your data", explorative=True)
+            st.write("Profile created")
+            st_profile_report(profile)
+            st.write("Profile report generated")
+            st.download_button(
+            'Download  Report',
+            data=profile.to_html(),
+                file_name = 'Transactions.html',
+            help='Click  to get you own insights!'
+        )
+        else:
+            st.write("Please upload a CSV file to start the conversation.")
+
+
     with st.expander('Visualizing your Data'):
         st.write('Visualizing your Data')
     if uploaded_file:
@@ -95,6 +113,9 @@ with tab1:
 #         file_name = 'Transactions.html',
 #       help='Click  to get you own insights!'
 # )
+
+
+
 with tab2:
         def conversational_chat(query, history):
             inputs = {
