@@ -3,7 +3,6 @@ dependencies:
   - pandas
   - pandas-profiling
   - numpy
-  - pandas
   - matplotlib
   - seaborn
   - openpyxl
