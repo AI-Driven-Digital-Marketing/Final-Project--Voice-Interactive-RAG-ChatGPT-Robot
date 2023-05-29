@@ -8,6 +8,7 @@ dependencies:
   - openpyxl
   - pip
   - pip:
+    - streamlit-pandas-profiling
     - pinecone-client
     - faiss-cpu
     - openai
@@ -27,7 +28,7 @@ dependencies:
     - tiktoken
     - tabulate
     - sweetviz
-
+    - loguru
 
 
  
