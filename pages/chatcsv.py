@@ -75,14 +75,16 @@ with tab1:
 
     with st.expander('Visualizing your Data'):
         st.write('Visualizing your Data')
-        if uploaded_file is not None:
+        if uploaded_file and temp_file :
             df2 = pd.read_csv(temp_file.name,index_col=0)
+            viz_df = pd.DataFrame(df2)
             st.write("DataFrame:")
             st.write(print(type(df2)))
 
         try:
             st.write("Calling sv.analyze")
-            analysis = sv.analyze(df2)
+
+            analysis = sv.analyze(viz_df)
             st.write("Creating HTML report...")
             report_name = "Sweetviz_Report.html"
             analysis.show_html(report_name)
