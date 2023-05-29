@@ -7,7 +7,6 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain.document_loaders.csv_loader import CSVLoader
-# import sweetviz as sv
 # from langchain.vectorstores import FAISS
 import tempfile
 from datetime import datetime
@@ -16,6 +15,7 @@ from pathlib import Path
 from pandas_profiling import ProfileReport
 from pandas_profiling.utils.cache import cache_zipped_file
 from streamlit_pandas_profiling import st_profile_report
+import sweetviz as sv
 
 
 st.expander("About this app")
