@@ -25,7 +25,7 @@ dependencies:
     # - flask
     # - tiktoken
     - tabulate
-    # # - sweetviz
+    - sweetviz
     # - loguru
 
 
