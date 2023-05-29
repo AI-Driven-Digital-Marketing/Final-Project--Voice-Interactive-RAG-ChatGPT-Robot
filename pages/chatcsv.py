@@ -45,22 +45,19 @@ if uploaded_file:
 
     llm = ChatOpenAI(temperature=0, openai_api_key=user_api_key)
     agent = create_csv_agent(llm=llm, path=temp_file.name, verbose=True)
-
+    df2= pd.read_csv(temp_file.name,index_col=0)
     temp_file.close()
 
 
 with tab1:
     with st.expander("Know your Data"):
         if uploaded_file:
-            df2= pd.read_csv(temp_file.name,index_col=0)
             st.dataframe(df2)
         else:
             st.write("Please upload a CSV file to start the conversation.")
 
     with st.expander("Profiling your Data"):
         if uploaded_file:
-            df2= pd.read_csv(temp_file.name,index_col=0)
-
             profile = ProfileReport(df2, title="Profile Report of your data", explorative=True)
             st_profile_report(profile)
             st.download_button(
@@ -76,7 +73,6 @@ with tab1:
     with st.expander('Visualizing your Data'):
         st.write('Visualizing your Data')
         if uploaded_file and temp_file :
-            df2 = pd.read_csv(temp_file.name,index_col=0)
             viz_df = pd.DataFrame(df2)
             st.write("DataFrame:")
             st.write(print(type(df2)))
