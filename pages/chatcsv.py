@@ -75,34 +75,26 @@ with tab1:
 
     with st.expander('Visualizing your Data'):
         st.write('Visualizing your Data')
-    if uploaded_file:
-        # Let's inspect the DataFrame
-        st.write("DataFrame:")
-        st.write(df2)
+        if uploaded_file is not None:
+            df2 = pd.read_csv(uploaded_file)
+            st.write("DataFrame:")
+            st.write(df2)
 
-        # If df2 seems fine, let's analyze it
         try:
             st.write("Calling sv.analyze")
-            analyze_report = sv.analyze(df2)
-            st.write("Calling analyze_report.show_html")
-            # Create an HTML report
-            analyze_report.show_html('report.html')
+            analysis = sv.analyze(df2)
+            st.write("Creating HTML report...")
+            report_name = "Sweetviz_Report.html"
+            analysis.show_html(report_name)
 
-            # Display the report in Streamlit
-            with open("report.html", 'r') as f:
-                html_string = f.read()
-            st.markdown(html_string, unsafe_allow_html=True)
+            st.write("Displaying Sweetviz report...")
+            HtmlFile = open(report_name, 'r', encoding='utf-8')
+            source_code = HtmlFile.read()
+            components.v1.html(source_code, height=600, width=800)
+
         except Exception as e:
             st.write("Error in Sweetviz analyze:")
             st.write(e)
-    #     profile = profiling_transaction(df)
-#     st_profile_report(profile)
-#     st.download_button(
-#       'Download  Report',
-#       data=profile.to_html(),
-#         file_name = 'Transactions.html',
-#       help='Click  to get you own insights!'
-# )
 
 
 
