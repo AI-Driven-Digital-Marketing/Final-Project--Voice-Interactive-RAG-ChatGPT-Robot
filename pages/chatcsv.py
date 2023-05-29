@@ -1,13 +1,13 @@
 import streamlit as st
-from io import StringIO
-import pandas as pd
-from streamlit_chat import message
-from langchain.agents import create_csv_agent
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.chat_models import ChatOpenAI
-from langchain.chains import ConversationalRetrievalChain
-from langchain.document_loaders.csv_loader import CSVLoader
-import sweetviz as sv
+# from io import StringIO
+# import pandas as pd
+# from streamlit_chat import message
+# from langchain.agents import create_csv_agent
+# from langchain.embeddings.openai import OpenAIEmbeddings
+# from langchain.chat_models import ChatOpenAI
+# from langchain.chains import ConversationalRetrievalChain
+# from langchain.document_loaders.csv_loader import CSVLoader
+# import sweetviz as sv
 # from langchain.vectorstores import FAISS
 import tempfile
 from datetime import datetime
@@ -66,13 +66,10 @@ with tab1:
 
     with st.expander("Profiling your Data"):
         if uploaded_file:
-            st.write("Uploaded file name is: {}".format(uploaded_file.name))
             df2= pd.read_csv(temp_file.name,index_col=0)
-            st.write("Dataframe created")
+
             profile = ProfileReport(df2, title="Profile Report of your data", explorative=True)
-            st.write("Profile created")
             st_profile_report(profile)
-            st.write("Profile report generated")
             st.download_button(
             'Download  Report',
             data=profile.to_html(),
