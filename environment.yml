@@ -11,10 +11,10 @@ dependencies:
     - streamlit-pandas-profiling
     - pinecone-client
     - openai
-    # - streamlit-audiorecorder
-    # - ffmpeg-python
-    # - openai-whisper
-    # - librosa
+    - streamlit-audiorecorder
+    - ffmpeg-python
+    - openai-whisper
+    - librosa
     - streamlit-chat
     # - boto3
     - langchain 
