@@ -16,6 +16,7 @@ from pandas_profiling import ProfileReport
 from pandas_profiling.utils.cache import cache_zipped_file
 from streamlit_pandas_profiling import st_profile_report
 import sweetviz as sv
+import streamlit.components.v1 as components
 
 
 st.expander("About this app")
@@ -47,15 +48,7 @@ if uploaded_file:
 
     temp_file.close()
 
-# st.dataframe(uploaded_file)
 
-# @st.cache_resource 
-# def profiling_transaction(uploaded_file): 
-#     df2 = pd.read_csv(uploaded_file)
-#     profile = ProfileReport(
-#         df2, title="Profile Report", explorative=True
-#     )  
-#     return profile
 with tab1:
     with st.expander("Know your Data"):
         if uploaded_file:
@@ -86,8 +79,6 @@ with tab1:
         # Let's inspect the DataFrame
         st.write("DataFrame:")
         st.write(df2)
-        st.write("DataFrame column types:")
-        st.write(df2.dtypes)
 
         # If df2 seems fine, let's analyze it
         try:
