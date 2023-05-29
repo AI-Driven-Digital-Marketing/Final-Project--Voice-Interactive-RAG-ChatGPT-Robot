@@ -16,14 +16,14 @@ dependencies:
     - openai-whisper
     - librosa
     - streamlit-chat
-    # - boto3
+    - boto3
     - langchain 
-    # - pymysql
-    # - pexpect
-    # - audio-recorder-streamlit
-    # - streamlit-audiorecorder
-    # - flask
-    # - tiktoken
+    - pymysql
+    - pexpect
+    - audio-recorder-streamlit
+    - streamlit-audiorecorder
+    - flask
+    - tiktoken
     - tabulate
     - sweetviz
     # - loguru
