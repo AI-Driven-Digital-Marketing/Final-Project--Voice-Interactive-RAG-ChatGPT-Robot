@@ -1,7 +1,7 @@
 import streamlit as st
 from io import StringIO
 import pandas as pd
-from streamlit_chat import message
+# from streamlit_chat import message
 from langchain.agents import create_csv_agent
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
@@ -113,53 +113,53 @@ with tab1:
 
 
 
-with tab2:
-        def conversational_chat(query, history):
-            inputs = {
-                "input": query,
-                "chat_history": history
-            }
-            result = agent(inputs)
+# with tab2:
+#         def conversational_chat(query, history):
+#             inputs = {
+#                 "input": query,
+#                 "chat_history": history
+#             }
+#             result = agent(inputs)
             
-            response = ""
-            if "choices" in result:
-                response = result["choices"][0]["message"]["content"]
-            elif "response" in result:
-                response = result["response"]
-            elif "output" in result:
-                response = result["output"]
+#             response = ""
+#             if "choices" in result:
+#                 response = result["choices"][0]["message"]["content"]
+#             elif "response" in result:
+#                 response = result["response"]
+#             elif "output" in result:
+#                 response = result["output"]
                 
-            history.append((query, response))
-            return response
+#             history.append((query, response))
+#             return response
 
 
-        if 'history' not in st.session_state:
-            st.session_state['history'] = []
+#         if 'history' not in st.session_state:
+#             st.session_state['history'] = []
 
-        if 'generated' not in st.session_state:
-            st.session_state['generated'] = ["Hello! Ask me anything about the CSV file 🤗"]
+#         if 'generated' not in st.session_state:
+#             st.session_state['generated'] = ["Hello! Ask me anything about the CSV file 🤗"]
 
-        if 'past' not in st.session_state:
-            st.session_state['past'] = ["Hey! 👋"]
+#         if 'past' not in st.session_state:
+#             st.session_state['past'] = ["Hey! 👋"]
 
-        response_container = st.container()
-        container = st.container()
+#         response_container = st.container()
+#         container = st.container()
 
-        with container:
-            with st.form(key='my_form', clear_on_submit=True):
-                user_input = st.text_input("Query:", placeholder="Talk about your CSV data here (:",
-                                        key='input')
-                submit_button = st.form_submit_button(label='Send')
+#         with container:
+#             with st.form(key='my_form', clear_on_submit=True):
+#                 user_input = st.text_input("Query:", placeholder="Talk about your CSV data here (:",
+#                                         key='input')
+#                 submit_button = st.form_submit_button(label='Send')
 
-            if submit_button and user_input:
-                output = conversational_chat(user_input, st.session_state['history'])
-                st.session_state['past'].append(user_input)
-                st.session_state['generated'].append(output)
+#             if submit_button and user_input:
+#                 output = conversational_chat(user_input, st.session_state['history'])
+#                 st.session_state['past'].append(user_input)
+#                 st.session_state['generated'].append(output)
 
 
-        if st.session_state['generated']:
-            with response_container:
-                for i in range(len(st.session_state['generated'])):
-                    message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="big-smile")
-                    message(st.session_state["generated"][i], key=str(i), avatar_style="thumbs")
+#         if st.session_state['generated']:
+#             with response_container:
+#                 for i in range(len(st.session_state['generated'])):
+#                     message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="big-smile")
+#                     message(st.session_state["generated"][i], key=str(i), avatar_style="thumbs")
 
