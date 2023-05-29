@@ -2,7 +2,7 @@ name: TorchEnv
 dependencies:
   - pandas-profiling
   - numpy
-  - pandas
+  - pandas==1.4.3
   - matplotlib
   - seaborn
   - openpyxl
