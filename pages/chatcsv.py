@@ -1,12 +1,12 @@
 import streamlit as st
-# from io import StringIO
-# import pandas as pd
+from io import StringIO
+import pandas as pd
 # from streamlit_chat import message
-# from langchain.agents import create_csv_agent
-# from langchain.embeddings.openai import OpenAIEmbeddings
-# from langchain.chat_models import ChatOpenAI
-# from langchain.chains import ConversationalRetrievalChain
-# from langchain.document_loaders.csv_loader import CSVLoader
+from langchain.agents import create_csv_agent
+from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.chat_models import ChatOpenAI
+from langchain.chains import ConversationalRetrievalChain
+from langchain.document_loaders.csv_loader import CSVLoader
 # import sweetviz as sv
 # from langchain.vectorstores import FAISS
 import tempfile
