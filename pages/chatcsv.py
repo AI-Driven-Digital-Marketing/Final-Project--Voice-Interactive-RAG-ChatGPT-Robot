@@ -76,7 +76,7 @@ with tab1:
     with st.expander('Visualizing your Data'):
         st.write('Visualizing your Data')
         if uploaded_file is not None:
-            df2 = pd.read_csv(uploaded_file)
+            df2 = pd.read_csv(temp_file.name,index_col=0)
             st.write("DataFrame:")
             st.write(df2)
 
