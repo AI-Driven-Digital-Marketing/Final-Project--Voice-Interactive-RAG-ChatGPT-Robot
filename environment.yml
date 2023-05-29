@@ -15,7 +15,7 @@ dependencies:
     # - ffmpeg-python
     # - openai-whisper
     # - librosa
-    # - streamlit-chat
+    - streamlit-chat
     # - boto3
     - langchain 
     # - pymysql
