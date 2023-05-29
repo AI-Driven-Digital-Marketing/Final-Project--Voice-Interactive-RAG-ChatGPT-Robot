@@ -82,7 +82,9 @@ with tab1:
 
         # If df2 seems fine, let's analyze it
         try:
+            st.write("Calling sv.analyze")
             analyze_report = sv.analyze(df2)
+            st.write("Calling analyze_report.show_html")
             # Create an HTML report
             analyze_report.show_html('report.html')
 
