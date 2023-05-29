@@ -2,7 +2,7 @@ name: TorchEnv
 dependencies:
   - pandas-profiling
   - numpy
-  - pandas=*
+  - pandas
   - matplotlib
   - seaborn
   - openpyxl
@@ -25,7 +25,7 @@ dependencies:
     - flask
     - tiktoken
     - tabulate
-    - sweetviz=*
+    - sweetviz
     # - loguru
 
 
