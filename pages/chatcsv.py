@@ -15,8 +15,8 @@ from pathlib import Path
 from pandas_profiling import ProfileReport
 from pandas_profiling.utils.cache import cache_zipped_file
 from streamlit_pandas_profiling import st_profile_report
-import sweetviz as sv
-import streamlit.components.v1 as components
+# import sweetviz as sv
+# import streamlit.components.v1 as components
 
 
 st.expander("About this app")
@@ -70,29 +70,29 @@ with tab1:
             st.write("Please upload a CSV file to start the conversation.")
 
 
-    with st.expander('Visualizing your Data'):
-        st.write('Visualizing your Data')
-        if uploaded_file and temp_file :
-            viz_df = pd.DataFrame(df2)
-            st.write("DataFrame:")
-            st.write(print(type(df2)))
+    # with st.expander('Visualizing your Data'):
+    #     st.write('Visualizing your Data')
+    #     if uploaded_file and temp_file :
+    #         viz_df = pd.DataFrame(df2)
+    #         st.write("DataFrame:")
+    #         st.write(print(type(viz_df)))
 
-        try:
-            st.write("Calling sv.analyze")
+    #     try:
+    #         st.write("Calling sv.analyze")
 
-            analysis = sv.analyze(viz_df)
-            st.write("Creating HTML report...")
-            report_name = "Sweetviz_Report.html"
-            analysis.show_html(report_name)
+    #         analysis = sv.analyze(viz_df)
+    #         st.write("Creating HTML report...")
+    #         report_name = "Sweetviz_Report.html"
+    #         analysis.show_html(report_name)
 
-            st.write("Displaying Sweetviz report...")
-            HtmlFile = open(report_name, 'r', encoding='utf-8')
-            source_code = HtmlFile.read()
-            components.v1.html(source_code, height=600, width=800)
+    #         st.write("Displaying Sweetviz report...")
+    #         HtmlFile = open(report_name, 'r', encoding='utf-8')
+    #         source_code = HtmlFile.read()
+    #         components.v1.html(source_code, height=600, width=800)
 
-        except Exception as e:
-            st.write("Error in Sweetviz analyze:")
-            st.write(e)
+    #     except Exception as e:
+    #         st.write("Error in Sweetviz analyze:")
+    #         st.write(e)
 
 
 
