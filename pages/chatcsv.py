@@ -16,7 +16,7 @@ from pandas_profiling import ProfileReport
 from pandas_profiling.utils.cache import cache_zipped_file
 from streamlit_pandas_profiling import st_profile_report
 # import sweetviz as sv
-# import streamlit.components.v1 as components
+import streamlit.components.v1 as components
 
 
 st.expander("About this app")
@@ -93,7 +93,6 @@ with tab1:
     #     except Exception as e:
     #         st.write("Error in Sweetviz analyze:")
     #         st.write(e)
-
 
 
 with tab2:
