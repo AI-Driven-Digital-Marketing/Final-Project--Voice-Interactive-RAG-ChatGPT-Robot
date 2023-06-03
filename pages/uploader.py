@@ -9,12 +9,12 @@ import pandas as pd
 #defining DAG arguments
 @st.cache_resource 
 def initial_pinecone():
-    index_name = 'openai-embedding-data'
+    index_name = 'langchain2'
 
     # initialize connection to pinecone (get API key at app.pinecone.io)
     pinecone.init(
-        api_key=st.secrets['pinecone_key'],
-        environment=st.secrets['pinecone_region']  # may be different, check at app.pinecone.io
+        api_key=st.secrets['PINECONE_API_KEY'],
+        environment=st.secrets['PINECONE_API_ENV']  # may be different, check at app.pinecone.io
     )
     # check if index already exists (it shouldn't if this is first time)
     if index_name not in pinecone.list_indexes():
