@@ -13,7 +13,8 @@ from audio_recorder_streamlit import audio_recorder
 
 
 
-tab1, tab2, tab3 = st.tabs(["Domain Data Q&A", "Knowledge Base Q&A", "Private Database Query"])
+
+tab1, tab2, tab3, tab4 = st.tabs(["Domain Data Q&A", "Knowledge Base Q&A", "Private Database Query", "ChatwithyourCSV"])
 
 
 def save_wav(audio_data):
@@ -265,3 +266,20 @@ with tab3:
             st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]["table_info"]))    
     else:
         st.write('Table Info')
+# with tab4:
+#     with st.expander("About this app"):
+#         st.write('Enterprise Private/Production Database Query (Internal-Private)')
+#     form = st.form(key='myform4')
+#     query = form.text_input( "Query your data based on business requirment 👇",
+#         placeholder="Write your prompt here...",
+#         value= default_input
+#     )
+#     submit = form.form_submit_button('Submit')
+#     if submit:
+#         OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
+#         def csv_query():
+#         agent = create_csv_agent(OpenAI(temperature=0), './data/student.csv', verbose=True)
+#         agent.run("添加三班明星，同步更新./data/student.csv")
+
+# os.environ['OPENAI_API_KEY'] = "YOUR API KEY"
+# csv_query()
