@@ -26,6 +26,10 @@ dependencies:
     - tiktoken
     - tabulate
     - sweetviz
+    - transformers
+    - accelerate
+    - einops 
+
     # - loguru
 
 
