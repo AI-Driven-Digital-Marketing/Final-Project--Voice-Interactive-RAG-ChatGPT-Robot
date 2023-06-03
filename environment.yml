@@ -29,6 +29,7 @@ dependencies:
     - transformers
     - accelerate
     - einops 
+    = huggingface_hub
 
     # - loguru
 
