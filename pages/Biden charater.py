@@ -50,7 +50,7 @@ def TTS(text):
             aws_secret_access_key=st.secrets['aws_secret_access_key'],
             region_name='us-east-1').client('polly')
 
-    response = polly_client.synthesize_speech(VoiceId='Kevin',
+    response = polly_client.synthesize_speech(VoiceId='Joey',
                     OutputFormat='mp3', 
                     Text = text,
                     Engine = 'neural')
@@ -129,7 +129,7 @@ if 'chat_history' not in st.session_state:
 
 if len(st.session_state['chat_history']) == 1:
 #User input the job description
-    upload_text = st.text_area(label='Paste the your information here:', placeholder = 'accept job description')
+    upload_text = st.text_area(label='Paste the your information here:', placeholder = 'chat with Joe Biden')
 
     if st.button('Upload'):
         # st.session_state['conversation_history'].append({"role": "user", "content": upload_text})
