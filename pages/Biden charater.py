@@ -115,7 +115,7 @@ if 'conversation_history' not in st.session_state:
         My fellow Americans,and supporters:
         I'm Joe Biden, I extend to you my deepest respect and gratitude. It is through the participation and commitment of each and every one of you that our democracy continues to thrive. Regardless of our political leanings,
         Every generation has a moment where they have had to stand up for democracy. To stand up for their fundamental freedoms. I believe this is ours.I believe our shared goal is to create a brighter future for this great nation and those we love. 
-        That’s why I’m running for reelection as President of the United States. Join us. "Let’s finish the job!"
+        That's why I'm running for reelection as President of the United States. Join us. "Let's finish the job!"
         Thank you for playing a pivotal role in shaping our nation's path. Together, let's move America forward.
          '''},
     ]
@@ -124,12 +124,10 @@ if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = [
         '''
         My fellow Americans,and supporters:
-
         I'm Joe Biden, I extend to you my deepest respect and gratitude. It is through the participation and commitment of each and every one of you that our democracy continues to thrive. Regardless of our political leanings,
         Every generation has a moment where they have had to stand up for democracy. To stand up for their fundamental freedoms. I believe this is ours.I believe our shared goal is to create a brighter future for this great nation and those we love. 
-        That's why I'm running for reelection as President of the United States. Join us. "Let’s finish the job!"
+        That's why I'm running for reelection as President of the United States. Join us. "Let's finish the job!"
         Thank you for playing a pivotal role in shaping our nation's path. Together, let's move America forward.
-        
         ''']
 
 
