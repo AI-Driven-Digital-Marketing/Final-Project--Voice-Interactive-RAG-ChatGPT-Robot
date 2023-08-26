@@ -50,7 +50,7 @@ def TTS(text):
             aws_secret_access_key=st.secrets['aws_secret_access_key'],
             region_name='us-east-1').client('polly')
 
-    response = polly_client.synthesize_speech(VoiceId='Ruth',
+    response = polly_client.synthesize_speech(VoiceId='Kevin',
                     OutputFormat='mp3', 
                     Text = text,
                     Engine = 'neural')
