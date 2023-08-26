@@ -60,7 +60,7 @@ def TTS(text):
     # file.close()
     return speech
 
-with st.expander("Overview of Mock Interview Robots"):
+with st.expander("Overview of Biden Reselection Agent Chatbot"):
     st.write("""
         Introduction: \n
         Mock Interview Robots is a tool that utilizes Open AI API and prompt engineering to offer an immersive interview experience for job seekers.
@@ -123,11 +123,21 @@ Despite being a computer program, please maintain the role of being Joe Biden th
     ]
 
 if 'chat_history' not in st.session_state:
-    st.session_state['chat_history'] = ["Hey! Please enter your job description below then we can start the mock interview!"]
+    st.session_state['chat_history'] = [
+        '''
+        My fellow Americans,and supporters:
+        I'm Joe Biden, I extend to you my deepest respect and gratitude. It is through the participation and commitment of each and every one of you that our democracy continues to thrive. Regardless of our political leanings,
+        Every generation has a moment where they have had to stand up for democracy. To stand up for their fundamental freedoms. I believe this is ours.I believe our shared goal is to create a brighter future for this great nation and those we love. 
+        That’s why I’m running for reelection as President of the United States. Join us. "Let’s finish the job!"
+        Thank you for playing a pivotal role in shaping our nation's path. Together, let's move America forward.
+        
+        ''']
+
+
 
 if len(st.session_state['chat_history']) == 1:
 #User input the job description
-    upload_text = st.text_area(label='Paste the job description here:', placeholder = 'accept job description')
+    upload_text = st.text_area(label='Paste the your information here:', placeholder = 'accept job description')
 
     if st.button('Upload'):
         # st.session_state['conversation_history'].append({"role": "user", "content": upload_text})
