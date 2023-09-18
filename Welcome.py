@@ -35,7 +35,7 @@ with tab2:
        '''
     st.image('src/22391676133642_.pic.jpg')
 with tab1:
-    st.markdown('## Let us Talking with Data by Generative AI!')
+    st.markdown('## Let us Talk with Data by Generative AI!')
     st.video('src/pexels-rostislav-uzunov-7385122.mp4')
 
     '''

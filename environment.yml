@@ -1,8 +1,23 @@
 name: TorchEnv
+channels:
+  - conda-forge
 dependencies:
+  - pandas-profiling
+  - numpy
   - pandas
+  - matplotlib
+  - seaborn
+  - openpyxl
+  - re
+  - networkx
+  - streamlit
+  - openai
+  - dataclasses
+  - textwrap
+  - graphviz
   - pip
   - pip:
+    - streamlit-pandas-profiling
     - pinecone-client
     - openai
     - streamlit-audiorecorder
@@ -13,10 +28,20 @@ dependencies:
     - boto3
     - langchain 
     - pymysql
-    - chromadb
     - pexpect
     - audio-recorder-streamlit
     - streamlit-audiorecorder
+    - flask
+    - tiktoken
+    - tabulate
+    - sweetviz
+    - transformers
+    - accelerate
+    - einops 
+    - huggingface_hub
+    - streamlit-agraph
+
+    # - loguru
 
 
  

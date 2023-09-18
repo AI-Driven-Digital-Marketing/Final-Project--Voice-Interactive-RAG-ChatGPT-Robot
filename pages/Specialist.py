@@ -13,7 +13,8 @@ from audio_recorder_streamlit import audio_recorder
 
 
 
-tab1, tab2, tab3 = st.tabs(["Domain Data Q&A", "Knowledge Base Q&A", "Private Database Query"])
+
+tab1, tab2, tab3, tab4 = st.tabs(["Domain Data Q&A", "Knowledge Base Q&A", "Private Database Query", "ChatwithyourCSV"])
 
 
 def save_wav(audio_data):
@@ -30,7 +31,7 @@ def save_wav(audio_data):
         audio_file.writeframes(audio_data)
 
 def transcribe(audio):
-    # model = initialize()
+    model = initialize()
     openai.api_key = st.secrets['OPENAI_API_KEY']
     audio_file= open("audio_file_spec.wav", "rb")
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
@@ -39,8 +40,7 @@ def transcribe(audio):
 @st.cache_resource
 def initialize():
     index_name = "langchain2"
-
-    # initialize connection to pinecone (get API key at app.pinecone.io)
+  #  initialize connection to pinecone (get API key at app.pinecone.io)
     pinecone.init(
         api_key=st.secrets['PINECONE_API_KEY'],
         environment=st.secrets['PINECONE_API_ENV']  # may be different, check at app.pinecone.io
@@ -169,7 +169,8 @@ with tab1:
     submit = form.form_submit_button('Submit')   
     if submit:
         # get context, additional info from pinecone
-        docs = docsearch.similarity_search(query= query, include_metadata=True)
+        docs = docsearch.similarity_search(query= query)
+        # , include_metadata=True
         # call openai API
         result = chain.run(input_documents=docs, question=query)
         with st.expander("See searched docs here."):
@@ -237,7 +238,7 @@ with tab3:
         value= default_input
     )
     submit = form.form_submit_button('Submit')
-    if submit:
+    if submit and query != 'Show Schema Info':
         SQL_KEY = st.secrets['sql_key']
         OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
         db_uri = "mysql+pymysql:" + SQL_KEY
@@ -246,11 +247,39 @@ with tab3:
         db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True,return_intermediate_steps=True) 
         result = db_chain(query)
         with st.expander("See Generative SQL Query here."):
-            st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]))
-        result_data = result["intermediate_steps"][1]
+            st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][1]))    
+        result_data = result["intermediate_steps"][3]
         df = pd.DataFrame(
             eval(result_data))
+        st.write('Table Result:')
         st.write(df)
+        
+    elif submit and query == 'Show Schema Info':
+        SQL_KEY = st.secrets['sql_key']
+        OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
+        db_uri = "mysql+pymysql:" + SQL_KEY
+        db = SQLDatabase.from_uri(db_uri)
+        llm = OpenAI(temperature=0, openai_api_key= OPENAI_API_KEY)
+        db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True,return_intermediate_steps=True) 
+        result = db_chain(query)
+        with st.expander("See Schema Info and DDL here."):
+            st.markdown("```sql\n{}\n```".format(result["intermediate_steps"][0]["table_info"]))    
+    else:
+        st.write('Table Info')
+# with tab4:
+#     with st.expander("About this app"):
+#         st.write('Enterprise Private/Production Database Query (Internal-Private)')
+#     form = st.form(key='myform4')
+#     query = form.text_input( "Query your data based on business requirment 👇",
+#         placeholder="Write your prompt here...",
+#         value= default_input
+#     )
+#     submit = form.form_submit_button('Submit')
+#     if submit:
+#         OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
+#         def csv_query():
+#         agent = create_csv_agent(OpenAI(temperature=0), './data/student.csv', verbose=True)
+#         agent.run("添加三班明星，同步更新./data/student.csv")
 
-
-
+# os.environ['OPENAI_API_KEY'] = "YOUR API KEY"
+# csv_query()
