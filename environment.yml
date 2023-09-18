@@ -6,6 +6,13 @@ dependencies:
   - matplotlib
   - seaborn
   - openpyxl
+  - re
+  - networkx
+  - streamlit
+  - openai
+  - dataclasses
+  - textwrap
+  - graphviz
   - pip
   - pip:
     - streamlit-pandas-profiling
@@ -30,6 +37,7 @@ dependencies:
     - accelerate
     - einops 
     - huggingface_hub
+    - streamlit-agraph
 
     # - loguru
 
