@@ -1,4 +1,6 @@
 name: TorchEnv
+channels:
+  - conda-forge
 dependencies:
   - pandas-profiling
   - numpy
